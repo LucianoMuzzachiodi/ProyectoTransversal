@@ -1,6 +1,7 @@
 
-package universidadejemplo.AccesoADatos;
+package universidadgrupo5;
 
+import universidadgrupo5.accesoADatos.Conexion;
 import java.sql.*;
 import javax.swing.JOptionPane;
 

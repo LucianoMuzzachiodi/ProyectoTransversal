@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package universidadejemplo.Entidades;
+package universidadgrupo5.entidades;
 
 /**
  *
@@ -11,8 +11,8 @@ package universidadejemplo.Entidades;
  */
 public class Inscripcion {
     private int idInscripcion;
-    public Alumno alumno;
-    public Materia materia;
+    private Alumno alumno;
+    private Materia materia;
     private double nota;
 
     public Inscripcion() {
