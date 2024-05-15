@@ -5,10 +5,63 @@
  */
 package universidadgrupo5.accesoADatos;
 
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import universidadgrupo5.entidades.Alumno;
+
 /**
  *
  * @author Luciano Muzzachiodi
  */
 public class AlumnoData {
+    private Connection con = null;
     
+    public AlumnoData(){
+        
+        con = Conexion.getConexion();
+    }
+    
+    public void guardar(Alumno alumno){
+        
+        String sql = "INSERT INTO `alumno`(`dni`, `apellido`, `nombre`, `fechaNacimiento`, `estado`)"
+                       + "VALUES (?, ?, ?, ?, ?)";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, alumno.getDni());
+            ps.setString(2, alumno.getApellido());
+            ps.setString(3, alumno.getNombre());
+            ps.setDate(4, Date.valueOf(alumno.getFechaNac()));
+            ps.setBoolean(5, alumno.isActivo());
+            ps.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+//    public Alumno buscar(int id){
+//        Alumno alumnoAxu = null;
+//        
+//        String sql = "SELECT * FROM `alumno` WHERE id = ?";
+//        try {
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.setInt(1, id);
+//            
+//            ResultSet rs = ps.executeQuery();
+//            
+//            while (rs.next()){
+//                
+//                
+//              }
+//            
+//        } catch (SQLException ex) {
+//            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return alumnoAxu;
+//        
+//        
+//    }
 }

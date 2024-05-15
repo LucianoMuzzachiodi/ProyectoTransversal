@@ -3,7 +3,8 @@ package universidadgrupo5;
 
 import universidadgrupo5.accesoADatos.Conexion;
 import java.sql.*;
-import javax.swing.JOptionPane;
+import universidadgrupo5.accesoADatos.AlumnoData;
+
 
 
 /**
@@ -16,6 +17,24 @@ public class UniversidadEjemplo {
     public static void main(String[] args) throws SQLException{
                  
             Connection con = Conexion.getConexion();
+            
+//            Alumno pedro = new Alumno(3129756, "Gatica", "Pedro", LocalDate.of(1994, 10, 18), true);
+            AlumnoData ad = new AlumnoData();
+            
+//            ad.guardar(pedro);
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
 //            String sql="INSERT INTO alumno(`dni`, `apellido`, `nombre`, `fechaNacimiento`, `estado`) "
 //                    + "VALUES (31201637, 'Muzzachiodi', 'Luciano', '1984-10-16', true), (42387596, 'Lopez', 'Ezequiel', '1997-05-28', '1'), (45986723, 'Amaya', 'Daniela', '1999-10-30', '1')";
