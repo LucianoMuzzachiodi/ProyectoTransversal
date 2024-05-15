@@ -16,7 +16,7 @@ import universidadgrupo5.entidades.Alumno;
  * @author Luciano Muzzachiodi
  */
 public class AlumnoData {
-    private Connection con = null;
+    private Connection con;
     
     public AlumnoData(){
         
@@ -46,19 +46,19 @@ public class AlumnoData {
     public Alumno buscar(int id){
         Alumno alumnoAxu = new Alumno();
         
-        String sql = "SELECT * FROM `alumno` WHERE id = "+id;
+        String sql = "SELECT * FROM alumno a WHERE a.idAlumno = 3";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
                 alumnoAxu = new Alumno(rs.getInt("idAlumno"),rs.getInt("dni"),rs.getString("apellido"),rs.getString("nombre"),LocalDate.parse(String.valueOf(rs.getDate("fechaNacimiento"))),rs.getBoolean("estado"));
-              }
+                return alumnoAxu;
+            }
             
         } catch (SQLException ex) {
             Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         return alumnoAxu;
-        
-        
     }
 }
