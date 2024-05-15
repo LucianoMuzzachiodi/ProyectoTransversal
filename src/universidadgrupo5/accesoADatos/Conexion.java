@@ -5,9 +5,7 @@
  */
 package universidadgrupo5.accesoADatos;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,40 +13,30 @@ import javax.swing.JOptionPane;
  * @author Luciano Muzzachiodi
  */
 public class Conexion {
-    private static String url="jdbc:mysql://localhost:3306/universidad";
-    private static String usuario="root";
-    private static String password="";
+    private static final String URL="jdbc:mariadb://localhost:3306/";
+    private static final String DB="universidadgrupo5";
+    private static final String USUARIO="root";
+    private static final String PASSWORD="";
+    private static Connection connection;
 
+    private Conexion(){}
    
-    private static Conexion conexion=null;
-    
-     private Conexion() {
-        try {
-            Class.forName("org.mariadb.jdbc.Driver");
-            
-        } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Clase Conexion: Error al cargar Driver");
-        }
-    }
-
-
-    
     public static Connection getConexion() {
-        Connection con=null;
-      if(conexion == null){
-          
-           conexion= new Conexion();
-        }
-        try {
-            // Setup the connection with the DB
-            con = DriverManager.getConnection(url + "?useLegacyDatetimeCode=false&serverTimezone=UTC" + "&user=" + usuario + "&password=" + password);
-            
-        }catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error de conexion ");
-        }
-        
-        return con;
-    }
-    
-}
 
+      if(connection == null){
+          
+           try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            connection = DriverManager.getConnection(URL+DB, USUARIO, PASSWORD);
+            
+            JOptionPane.showMessageDialog(null, "Conectado");
+            
+           } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error al cargar los Driver");
+           } catch (SQLException ex) {
+              JOptionPane.showMessageDialog(null, "Error al conectarse a la base de datos");
+          }
+        }
+      return connection;
+      }
+    }
