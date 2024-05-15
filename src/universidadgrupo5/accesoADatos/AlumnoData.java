@@ -46,7 +46,7 @@ public class AlumnoData {
     public Alumno buscar(int id){
         Alumno alumnoAxu = new Alumno();
         
-        String sql = "SELECT * FROM alumno a WHERE a.idAlumno = 3";
+        String sql = "SELECT * FROM alumno a WHERE a.idAlumno = "+id;
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
