@@ -20,7 +20,7 @@ public class UniversidadEjemplo {
             
 //            Alumno pedro = new Alumno(3129756, "Gatica", "Pedro", LocalDate.of(1994, 10, 18), true);
             AlumnoData ad = new AlumnoData();
-            
+            ad.buscar(3);
 //            ad.guardar(pedro);
             
             

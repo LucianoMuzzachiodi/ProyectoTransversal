@@ -6,6 +6,7 @@
 package universidadgrupo5.accesoADatos;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import universidadgrupo5.entidades.Alumno;
@@ -42,26 +43,22 @@ public class AlumnoData {
         
     }
     
-//    public Alumno buscar(int id){
-//        Alumno alumnoAxu = null;
-//        
-//        String sql = "SELECT * FROM `alumno` WHERE id = ?";
-//        try {
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ps.setInt(1, id);
-//            
-//            ResultSet rs = ps.executeQuery();
-//            
-//            while (rs.next()){
-//                
-//                
-//              }
-//            
-//        } catch (SQLException ex) {
-//            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return alumnoAxu;
-//        
-//        
-//    }
+    public Alumno buscar(int id){
+        Alumno alumnoAxu = new Alumno();
+        
+        String sql = "SELECT * FROM `alumno` WHERE id = "+id;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                alumnoAxu = new Alumno(rs.getInt("idAlumno"),rs.getInt("dni"),rs.getString("apellido"),rs.getString("nombre"),LocalDate.parse(String.valueOf(rs.getDate("fechaNacimiento"))),rs.getBoolean("estado"));
+              }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return alumnoAxu;
+        
+        
+    }
 }
