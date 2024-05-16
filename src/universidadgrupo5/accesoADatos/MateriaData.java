@@ -15,7 +15,7 @@ import universidadgrupo5.entidades.Materia;
  */
 public class MateriaData {
     private Connection con;
-    
+
     public MateriaData(){
         
         con = Conexion.getConexion();
