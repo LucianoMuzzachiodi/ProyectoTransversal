@@ -54,7 +54,7 @@ public class AlumnoData {
     public Alumno buscar(int id){
         Alumno alumnoAxu = new Alumno();
         
-        String sql = "SELECT * FROM alumno a WHERE a.idAlumno = "+id + "AND estado = 1";
+        String sql = "SELECT * FROM alumno a WHERE a.idAlumno = "+id + " AND estado = 1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
