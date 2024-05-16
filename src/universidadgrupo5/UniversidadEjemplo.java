@@ -19,7 +19,7 @@ public class UniversidadEjemplo {
             Connection con = Conexion.getConexion();
             
 
-//           AlumnoData alu = new AlumnoData();
+           AlumnoData alu = new AlumnoData();
 
 //            Alumno pedro = new Alumno(3129756, "Gatica", "Pedro", LocalDate.of(1994, 10, 18), true);
 //            AlumnoData ad = new AlumnoData();
@@ -36,7 +36,7 @@ public class UniversidadEjemplo {
 
 
              //BUSCAR POR ID
-//             System.out.println(alu.buscar(4));
+//             System.out.println(alu.buscar(99));
              
              
              

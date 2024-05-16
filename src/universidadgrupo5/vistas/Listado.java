@@ -1,4 +1,4 @@
-package Vista_Interfaz;
+package universidadgrupo5.vistas;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license

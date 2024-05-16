@@ -73,7 +73,7 @@ public class AlumnoData {
     
     
     
-    //BUSCAR UN ALUMNOI POR DNI
+    //BUSCAR UN ALUMNO POR DNI
     public Alumno buscarDni(int dni){
         Alumno alumnoAxu = new Alumno();
 

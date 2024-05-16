@@ -1,4 +1,4 @@
-package Vista_Interfaz;
+package universidadgrupo5.vistas;
 import javax.swing.table.DefaultTableModel;
 import universidadgrupo5.accesoADatos.AlumnoData;
 import universidadgrupo5.entidades.Alumno;
