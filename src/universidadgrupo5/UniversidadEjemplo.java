@@ -4,12 +4,9 @@ package universidadgrupo5;
 import universidadgrupo5.accesoADatos.Conexion;
 import java.sql.*;
 import universidadgrupo5.accesoADatos.AlumnoData;
-<<<<<<< HEAD
-=======
 import universidadgrupo5.accesoADatos.MateriaData;
 import universidadgrupo5.entidades.Alumno;
 import universidadgrupo5.entidades.Materia;
->>>>>>> 366c707f2e542de5d4b0afbd1308dd25299a7010
 
 
 
@@ -28,8 +25,6 @@ public class UniversidadEjemplo {
             AlumnoData ad = new AlumnoData();
             System.out.println(ad.buscar(3));
 //            ad.guardar(pedro);
-<<<<<<< HEAD
-=======
            //AlumnoData alu = new AlumnoData();
              
 
@@ -84,10 +79,6 @@ public class UniversidadEjemplo {
              
             
               
-
->>>>>>> 366c707f2e542de5d4b0afbd1308dd25299a7010
-            
-            
             
             
             
