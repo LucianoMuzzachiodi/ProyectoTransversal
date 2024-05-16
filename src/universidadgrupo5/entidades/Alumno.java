@@ -69,6 +69,8 @@ public class Alumno {
     public String toString() {
         String activo;
         if(this.estado){activo = "Sí";}else{activo = "No";}
+        String estado;
+        if(activo){estado = "Activo";}else{estado = "Inactivo";}
         return "\nID: "+idAlumno
                 + "\nNombre: "+nombre
                 + "\nApellido: "+apellido
