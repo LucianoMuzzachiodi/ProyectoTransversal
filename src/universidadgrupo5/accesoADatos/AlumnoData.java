@@ -58,10 +58,12 @@ public class AlumnoData {
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()){
+            if(rs.next()){
                 alumnoAxu = new Alumno(rs.getInt("idAlumno"),rs.getInt("dni"),rs.getString("apellido"),rs.getString("nombre"),LocalDate.parse(String.valueOf(rs.getDate("fechaNacimiento"))),rs.getBoolean("estado"));
                
                 return alumnoAxu;
+            }else{
+                JOptionPane.showMessageDialog(null, "No existe la materia con ese ID");
             }
             ps.close();
         } catch (SQLException ex) {

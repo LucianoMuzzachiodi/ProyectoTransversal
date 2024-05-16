@@ -36,7 +36,7 @@ public class UniversidadEjemplo {
 
 
              //BUSCAR POR ID
-//             System.out.println(alu.buscar(99));
+             System.out.println(alu.buscar(4));
              
              
              
