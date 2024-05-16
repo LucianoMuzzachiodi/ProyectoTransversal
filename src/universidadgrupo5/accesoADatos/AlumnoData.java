@@ -72,9 +72,10 @@ public class AlumnoData {
             int exito = ps.executeUpdate();
             if(exito == 1){
                 JOptionPane.showMessageDialog(null, "Alumno modificado");
+            } else {
+                JOptionPane.showMessageDialog(null, "El alumno no existe");
+            
             }
-            
-            
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
@@ -158,6 +159,8 @@ public class AlumnoData {
         
         return alumnoAxu;
     }
+    
+
     
     
 }

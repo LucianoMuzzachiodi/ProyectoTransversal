@@ -22,7 +22,7 @@ public class UniversidadEjemplo {
                  
            Connection con = Conexion.getConexion();
             
-           //AlumnoData alu = new AlumnoData();
+           AlumnoData alu = new AlumnoData();
              
 
             //AGREGAR ALUMNO
@@ -32,7 +32,7 @@ public class UniversidadEjemplo {
 
 
              //BUSCAR POR ID
-             //System.out.println(alu.buscar(3));
+//             System.out.println(alu.buscar(4));
              
              
              
@@ -42,7 +42,7 @@ public class UniversidadEjemplo {
               
              
              //MODIFICAMOS ALUMNO
-//             Alumno mariam = new Alumno(9, 41968360, "Mini", "Lucia", LocalDate.of(2007, 7, 26), true);
+//             Alumno mariam = new Alumno(9, 41968360, "Mini", "Mariam", LocalDate.of(2007, 7, 26), true);
 //             alu.modificar(mariam);
                
              //LISTAMOS ALUMNOS
@@ -53,11 +53,12 @@ public class UniversidadEjemplo {
 //                System.out.println("Fecha de nacimiento: " + alumno.getFechaNac());
 //            }
             
+               //ELIMINAR ALUMNO
+//               alu.eliminarAlumno(5);
 
 
 
-
-            MateriaData mat = new MateriaData();
+//            MateriaData mat = new MateriaData();
 
 //            AGREGAR MATERIA
 //            Materia labI = new Materia("Laboratori I", 1, true);
@@ -70,7 +71,9 @@ public class UniversidadEjemplo {
              
              
              
-             
+             //MODIFICAR MATERIA
+//             Materia webI = new Materia(4, "Web II", 1, true);
+//             mat.modificar(webI);
              
              
              
