@@ -105,11 +105,8 @@ public class AlumnoData {
         return alumnoAxu;
     }
 
-    
 
     
-    
-
     public void eliminarAlumno(int id) {
         try {
             String sql = "UPDATE alumno SET estado = 0 WHERE idAlumno = ? ";
@@ -117,11 +114,11 @@ public class AlumnoData {
             ps.setInt(1, id);
             int fila=ps.executeUpdate();
             if(fila == 1){
-                JOptionPane.showMessageDialog(null, " Se eliminó el alumno.");
+                JOptionPane.showMessageDialog(null, "Se eliminó el alumno.");
             }
             ps.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Alumno");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno");
         }
     }
 
