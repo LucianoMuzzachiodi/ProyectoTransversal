@@ -5,7 +5,9 @@ import universidadgrupo5.accesoADatos.Conexion;
 import java.sql.*;
 import java.time.LocalDate;
 import universidadgrupo5.accesoADatos.AlumnoData;
+import universidadgrupo5.accesoADatos.MateriaData;
 import universidadgrupo5.entidades.Alumno;
+import universidadgrupo5.entidades.Materia;
 
 
 
@@ -20,23 +22,60 @@ public class UniversidadEjemplo {
                  
            Connection con = Conexion.getConexion();
             
-           AlumnoData alu = new AlumnoData();
+           //AlumnoData alu = new AlumnoData();
              
 
-            //Agregar alumno
-            //Alumno mariam = new Alumno(9, 41968360, "Mini", "Marian", LocalDate.of(2007, 7, 26), true);
+            //AGREGAR ALUMNO
+//            Alumno mariam = new Alumno(9, 41968360, "Mini", "Marian", LocalDate.of(2007, 7, 26), true);
+//            alu.guardar(mariam);
+             
+
+
+             //BUSCAR POR ID
+             //System.out.println(alu.buscar(3));
              
              
-             //Buscamos por ID
-             //System.out.println(alu.buscar(4));
+             
+             //BUSCAR POR DNI
+             //System.out.println(alu.buscarDni(42387596));
               
               
-             //Modificamos alumno
+             
+             //MODIFICAMOS ALUMNO
 //             Alumno mariam = new Alumno(9, 41968360, "Mini", "Lucia", LocalDate.of(2007, 7, 26), true);
 //             alu.modificar(mariam);
-              
-              
+               
+             //LISTAMOS ALUMNOS
+//            for(Alumno alumno:alu.listarAlumnos()){
+//                System.out.println("\nDNI: " + alumno.getDni());
+//                System.out.println("Apellido: " + alumno.getApellido());
+//                System.out.println("Nombre: " + alumno.getNombre());
+//                System.out.println("Fecha de nacimiento: " + alumno.getFechaNac());
+//            }
+            
 
+
+
+
+            MateriaData mat = new MateriaData();
+
+//            AGREGAR MATERIA
+//            Materia labI = new Materia("Laboratori I", 1, true);
+//            mat.guardar(labI);
+
+
+
+             //BUSCAR MATERIA
+             //System.out.println(mat.buscar(4));
+             
+             
+             
+             
+             
+             
+             
+            
+              
 
             
             

@@ -68,7 +68,7 @@ public class Alumno {
     @Override
     public String toString() {
         String estado;
-        if(activo){estado = "Sí";}else{estado = "No";}
+        if(activo){estado = "Activo";}else{estado = "Inactivo";}
         return "\nID: "+idAlumno
                 + "\nNombre: "+nombre
                 + "\nApellido: "+apellido
