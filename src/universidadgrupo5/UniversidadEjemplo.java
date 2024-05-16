@@ -3,7 +3,9 @@ package universidadgrupo5;
 
 import universidadgrupo5.accesoADatos.Conexion;
 import java.sql.*;
+import java.time.LocalDate;
 import universidadgrupo5.accesoADatos.AlumnoData;
+import universidadgrupo5.entidades.Alumno;
 
 
 
@@ -16,12 +18,26 @@ public class UniversidadEjemplo {
     
     public static void main(String[] args) throws SQLException{
                  
-            Connection con = Conexion.getConexion();
+           Connection con = Conexion.getConexion();
             
-//            Alumno pedro = new Alumno(3129756, "Gatica", "Pedro", LocalDate.of(1994, 10, 18), true);
-            AlumnoData ad = new AlumnoData();
-            System.out.println(ad.buscar(3));
-//            ad.guardar(pedro);
+           AlumnoData alu = new AlumnoData();
+             
+
+            //Agregar alumno
+            //Alumno mariam = new Alumno(9, 41968360, "Mini", "Marian", LocalDate.of(2007, 7, 26), true);
+             
+             
+             //Buscamos por ID
+             //System.out.println(alu.buscar(4));
+              
+              
+             //Modificamos alumno
+//             Alumno mariam = new Alumno(9, 41968360, "Mini", "Lucia", LocalDate.of(2007, 7, 26), true);
+//             alu.modificar(mariam);
+              
+              
+
+
             
             
             
