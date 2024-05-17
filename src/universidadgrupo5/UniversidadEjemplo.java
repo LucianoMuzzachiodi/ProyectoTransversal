@@ -82,8 +82,8 @@ public class UniversidadEjemplo {
              
              
              //MODIFICAR MATERIA
-//             Materia webI = new Materia(4, "Web II", 1, true);
-//             mat.modificar(webI);
+             Materia webII = new Materia(4, "Web II", 2, false);
+             mat.modificar(webII);
 
 
 

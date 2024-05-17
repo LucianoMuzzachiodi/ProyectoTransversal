@@ -87,12 +87,13 @@ public class MateriaData {
             int exito = ps.executeUpdate();
             if(exito == 1){
                 JOptionPane.showMessageDialog(null, "Materia modificada");
+            } else {
+                JOptionPane.showMessageDialog(null, "La materia no existe");
+            
             }
             
-            
-            
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia" + ex);
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
         }
     }
     
