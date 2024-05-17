@@ -3,6 +3,7 @@ package universidadgrupo5;
 
 import universidadgrupo5.accesoADatos.Conexion;
 import java.sql.*;
+import java.time.LocalDate;
 import universidadgrupo5.accesoADatos.AlumnoData;
 import universidadgrupo5.accesoADatos.MateriaData;
 import universidadgrupo5.entidades.Alumno;
@@ -18,14 +19,8 @@ public class UniversidadEjemplo {
                  
             Connection con = Conexion.getConexion();
             
-
-//           AlumnoData alu = new AlumnoData();
-
-//            Alumno pedro = new Alumno(3129756, "Gatica", "Pedro", LocalDate.of(1994, 10, 18), true);
-//            AlumnoData ad = new AlumnoData();
-//            System.out.println(ad.buscar(3));
-//            ad.guardar(pedro);
-           //AlumnoData alu = new AlumnoData();
+           
+//            AlumnoData alu = new AlumnoData();
 
              
 
@@ -68,7 +63,7 @@ public class UniversidadEjemplo {
 //             MATERIADATA
 
 
-            MateriaData mat = new MateriaData();
+//            MateriaData mat = new MateriaData();
 
 //            AGREGAR MATERIA
 //            Materia labI = new Materia("Laboratori I", 1, true);
@@ -82,8 +77,8 @@ public class UniversidadEjemplo {
              
              
              //MODIFICAR MATERIA
-             Materia webII = new Materia(4, "Web II", 2, false);
-             mat.modificar(webII);
+//             Materia webII = new Materia(4, "Web II", 2, false);
+//             mat.modificar(webII);
 
 
 
