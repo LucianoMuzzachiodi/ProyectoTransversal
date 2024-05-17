@@ -33,6 +33,8 @@ public class Listar_Alumnos extends javax.swing.JInternalFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         JTABLE = new javax.swing.JTable();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         JTABLE.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -47,31 +49,83 @@ public class Listar_Alumnos extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(JTABLE);
 
+        jCheckBox1.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
+        jCheckBox1.setText("Selecciona una Materia");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
+        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jComboBox1.setEnabled(false);
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 790, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jCheckBox1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 11, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox1)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        if(jCheckBox1.isSelected()){
+            jComboBox1.setEnabled(true);
+        } else {
+            jComboBox1.setEnabled(false);
+        }
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        if(jCheckBox1.isSelected()){
+            
+        } else {
+            AlumnoData AD = new AlumnoData();
+            DTM.setColumnIdentifiers(new Object[]{"ID Alumno","DNI","Apellido","Nombre","Fecha de Nacimiento","Estado"});
+            JTABLE.setModel(DTM);
+            for(Alumno alumno:AD.listarAlumnos()){
+            DTM.addRow(new Object[]{alumno.getIdAlumno(),alumno.getDni(),alumno.getApellido(),alumno.getNombre(),alumno.getFechaNac(),alumno.isEstado()});
+        }
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
     public void Llenar(){
+        
         AlumnoData AD = new AlumnoData();
-        DTM.setColumnIdentifiers(new Object[]{"ID Alumon","DNI","Apellido","Nombre","Fecha de Nacimiento"});
+        DTM.setColumnIdentifiers(new Object[]{"ID Alumno","DNI","Apellido","Nombre","Fecha de Nacimiento","Estado"});
         JTABLE.setModel(DTM);
         for(Alumno alumno:AD.listarAlumnos()){
-            DTM.addRow(new Object[]{alumno.getIdAlumno(),alumno.getDni(),alumno.getApellido(),alumno.getNombre(),alumno.getFechaNac()});
+            DTM.addRow(new Object[]{alumno.getIdAlumno(),alumno.getDni(),alumno.getApellido(),alumno.getNombre(),alumno.getFechaNac(),alumno.isEstado()});
         }
         
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable JTABLE;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
