@@ -76,7 +76,7 @@ public class MateriaData {
     public void modificar(Materia materia){
    
         String sql = "UPDATE materia SET  nombre = ?, anio = ?, estado = ?"
-              + "WHERE idMateria = ?";
+              + " WHERE idMateria = ?";
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
