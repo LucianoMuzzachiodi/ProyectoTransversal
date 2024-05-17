@@ -1,6 +1,8 @@
 package universidadgrupo5.accesoADatos;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import universidadgrupo5.entidades.Materia;
 
@@ -92,5 +94,47 @@ public class MateriaData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia" + ex);
         }
+    }
+    
+    
+    
+    //ELIMINAR MATERIA
+    public void eliminarMateria(int id) {
+        try {
+            String sql = "UPDATE materia SET estado = 0 WHERE idMateria = ? ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            int fila=ps.executeUpdate();
+            if(fila == 1){
+                JOptionPane.showMessageDialog(null, "Se eliminó la materia");
+            }
+            ps.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
+        }
+    }
+    
+    
+    
+    //LISTAR MATERIAS ACTIVAS
+    public List<Materia> listarMaterias(){
+        ArrayList<Materia> materiaAxu = new ArrayList<>();
+
+        String sql = "SELECT * FROM materia a WHERE estado = 1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+               Materia materia = new Materia(rs.getInt("idMateria"),rs.getString("nombre"),rs.getInt("anio"),rs.getBoolean("estado"));
+               materiaAxu.add(materia);
+            }
+
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
+        }
+
+        return materiaAxu;
     }
 }

@@ -19,7 +19,7 @@ public class UniversidadEjemplo {
             Connection con = Conexion.getConexion();
             
 
-           AlumnoData alu = new AlumnoData();
+//           AlumnoData alu = new AlumnoData();
 
 //            Alumno pedro = new Alumno(3129756, "Gatica", "Pedro", LocalDate.of(1994, 10, 18), true);
 //            AlumnoData ad = new AlumnoData();
@@ -36,7 +36,7 @@ public class UniversidadEjemplo {
 
 
              //BUSCAR POR ID
-             System.out.println(alu.buscar(4));
+//             System.out.println(alu.buscar(4));
              
              
              
@@ -68,7 +68,7 @@ public class UniversidadEjemplo {
 //             MATERIADATA
 
 
-//            MateriaData mat = new MateriaData();
+            MateriaData mat = new MateriaData();
 
 //            AGREGAR MATERIA
 //            Materia labI = new Materia("Laboratori I", 1, true);
@@ -84,5 +84,19 @@ public class UniversidadEjemplo {
              //MODIFICAR MATERIA
 //             Materia webI = new Materia(4, "Web II", 1, true);
 //             mat.modificar(webI);
+
+
+
+            //ELIMINAR MATERIA
+//              mat.eliminarMateria(3);
+              
+              
+              
+            //LISTAMOS MATERIAS
+//              for(Materia materia:mat.listarMaterias()){
+//                  System.out.println("\nId: " + materia.getIdMateria());
+//                  System.out.println("Nombre: " + materia.getNombre());
+//                  System.out.println("Año: " + materia.getAnio());
+//              }
     }
 } 
