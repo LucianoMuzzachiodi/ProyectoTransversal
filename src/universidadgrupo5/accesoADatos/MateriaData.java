@@ -1,18 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package universidadgrupo5.accesoADatos;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import universidadgrupo5.entidades.Materia;
 
-/**
- *
- * @author Luciano Muzzachiodi
- */
+
 public class MateriaData {
     private Connection con;
 
@@ -82,7 +76,7 @@ public class MateriaData {
     public void modificar(Materia materia){
    
         String sql = "UPDATE materia SET  nombre = ?, anio = ?, estado = ?"
-              + "WHERE idMateria = ?";
+              + " WHERE idMateria = ?";
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -93,12 +87,55 @@ public class MateriaData {
             int exito = ps.executeUpdate();
             if(exito == 1){
                 JOptionPane.showMessageDialog(null, "Materia modificada");
+            } else {
+                JOptionPane.showMessageDialog(null, "La materia no existe");
+            
             }
             
-            
-            
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia" + ex);
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
         }
+    }
+    
+    
+    
+    //ELIMINAR MATERIA
+    public void eliminarMateria(int id) {
+        try {
+            String sql = "UPDATE materia SET estado = 0 WHERE idMateria = ? ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            int fila=ps.executeUpdate();
+            if(fila == 1){
+                JOptionPane.showMessageDialog(null, "Se eliminó la materia");
+            }
+            ps.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
+        }
+    }
+    
+    
+    
+    //LISTAR MATERIAS ACTIVAS
+    public List<Materia> listarMaterias(){
+        ArrayList<Materia> materiaAxu = new ArrayList<>();
+
+        String sql = "SELECT * FROM materia a WHERE estado = 1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+               Materia materia = new Materia(rs.getInt("idMateria"),rs.getString("nombre"),rs.getInt("anio"),rs.getBoolean("estado"));
+               materiaAxu.add(materia);
+            }
+
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
+        }
+
+        return materiaAxu;
     }
 }

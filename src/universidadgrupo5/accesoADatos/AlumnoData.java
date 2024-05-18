@@ -1,21 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package universidadgrupo5.accesoADatos;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import universidadgrupo5.entidades.Alumno;
 
-/**
- *
- * @author Luciano Muzzachiodi
- */
+
 public class AlumnoData {
     private Connection con;
     
@@ -24,6 +18,9 @@ public class AlumnoData {
         con = Conexion.getConexion();
     }
     
+    
+    
+    //GUARDAR ALUMNO
     public void guardar(Alumno alumno){
         
         String sql = "INSERT INTO `alumno`(`dni`, `apellido`, `nombre`, `fechaNacimiento`, `estado`)"
@@ -52,12 +49,89 @@ public class AlumnoData {
     }
     
     
+   
+    //BUSCAR ALUMNO POR ID
+    public Alumno buscar(int id){
+        Alumno alumnoAxu = new Alumno();
+        
+        String sql = "SELECT * FROM alumno a WHERE a.idAlumno = "+id + " AND estado = 1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                alumnoAxu = new Alumno(rs.getInt("idAlumno"),rs.getInt("dni"),rs.getString("apellido"),rs.getString("nombre"),LocalDate.parse(String.valueOf(rs.getDate("fechaNacimiento"))),rs.getBoolean("estado"));
+               
+                return alumnoAxu;
+            }else{
+                JOptionPane.showMessageDialog(null, "No existe la materia con ese ID");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return null;
+    }
     
     
+    
+    //BUSCAR UN ALUMNO POR DNI
+    public Alumno buscarDni(int dni){
+        Alumno alumnoAxu = new Alumno();
+
+        String sql = "SELECT * FROM alumno a WHERE dni = ? AND estado = 1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, dni);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()){
+                alumnoAxu = new Alumno(rs.getInt("idAlumno"),rs.getInt("dni"),rs.getString("apellido"),rs.getString("nombre"),LocalDate.parse(String.valueOf(rs.getDate("fechaNacimiento"))),rs.getBoolean("estado"));
+
+                return alumnoAxu;
+            }else{
+                JOptionPane.showMessageDialog(null, "No existe el alumno con ese DNI");
+            }
+
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+        }
+
+        return alumnoAxu;
+    }
+    
+    
+    
+    //LISTAR ALUMNOS ACTIVOS
+    public List<Alumno> listarAlumnos(){
+        ArrayList<Alumno> alumnoAxu = new ArrayList<>();
+
+        String sql = "SELECT * FROM alumno a WHERE estado = 1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+               Alumno alumno = new Alumno(rs.getInt("idAlumno"),rs.getInt("dni"),rs.getString("apellido"),rs.getString("nombre"),LocalDate.parse(String.valueOf(rs.getDate("fechaNacimiento"))),rs.getBoolean("estado"));
+               alumnoAxu.add(alumno);
+            }
+
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+        }
+
+        return alumnoAxu;
+    }
+    
+    
+    
+    //MODIFICAR ALUMNO
     public void modificar(Alumno alumno){
    
         String sql = "UPDATE alumno SET dni = ?, apellido = ?, nombre = ?, fechaNacimiento = ?"
-                + "WHERE idAlumno = ?";
+                + " WHERE idAlumno = ?";
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -81,32 +155,7 @@ public class AlumnoData {
     
     
     
-    
-    
-    
-    
-    public Alumno buscar(int id){
-        Alumno alumnoAxu = new Alumno();
-        
-        String sql = "SELECT * FROM alumno a WHERE a.idAlumno = "+id + "AND estado = 1";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()){
-                alumnoAxu = new Alumno(rs.getInt("idAlumno"),rs.getInt("dni"),rs.getString("apellido"),rs.getString("nombre"),LocalDate.parse(String.valueOf(rs.getDate("fechaNacimiento"))),rs.getBoolean("estado"));
-               
-                return alumnoAxu;
-            }
-            ps.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return alumnoAxu;
-    }
-
-
-    
+    //ELIMINAR ALUMNO
     public void eliminarAlumno(int id) {
         try {
             String sql = "UPDATE alumno SET estado = 0 WHERE idAlumno = ? ";
@@ -121,5 +170,4 @@ public class AlumnoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno");
         }
     }
-
 }
