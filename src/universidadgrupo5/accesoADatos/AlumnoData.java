@@ -70,7 +70,7 @@ public class AlumnoData {
             Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return alumnoAxu;
+        return null;
     }
     
     
@@ -131,7 +131,7 @@ public class AlumnoData {
     public void modificar(Alumno alumno){
    
         String sql = "UPDATE alumno SET dni = ?, apellido = ?, nombre = ?, fechaNacimiento = ?"
-                + "WHERE idAlumno = ?";
+                + " WHERE idAlumno = ?";
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);

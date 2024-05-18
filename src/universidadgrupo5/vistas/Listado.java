@@ -1,5 +1,7 @@
 package universidadgrupo5.vistas;
 
+import universidadgrupo5.accesoADatos.AlumnoData;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -10,12 +12,13 @@ package universidadgrupo5.vistas;
  * @author DANIELALEJANDROMIRAN
  */
 public class Listado extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form NewJFrame
      */
     public Listado() {
         initComponents();
+        AlumnoData AD = new AlumnoData();
     }
 
     /**
@@ -33,8 +36,10 @@ public class Listado extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -49,7 +54,7 @@ public class Listado extends javax.swing.JFrame {
 
         jMenuBar1.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
 
-        jMenu1.setText("Listado alumno");
+        jMenu1.setText("Alumno");
 
         jMenuItem1.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         jMenuItem1.setText("Listar alumno por tabla");
@@ -71,8 +76,11 @@ public class Listado extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Listado materia");
+        jMenu2.setText("Materia");
         jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Administracion");
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -88,6 +96,7 @@ public class Listado extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -148,6 +157,7 @@ public class Listado extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;

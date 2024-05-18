@@ -1,7 +1,10 @@
 package universidadgrupo5.vistas;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import universidadgrupo5.accesoADatos.AlumnoData;
+import universidadgrupo5.accesoADatos.MateriaData;
 import universidadgrupo5.entidades.Alumno;
+import universidadgrupo5.entidades.Materia;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -19,6 +22,9 @@ public class Listar_Alumnos extends javax.swing.JInternalFrame {
      */
     public Listar_Alumnos() {
         initComponents();
+        for (int i=DTM.getRowCount()-1;i>=0;i--) {
+            DTM.removeRow(i);
+        }
         Llenar();
     }
 
@@ -93,27 +99,41 @@ public class Listar_Alumnos extends javax.swing.JInternalFrame {
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         if(jCheckBox1.isSelected()){
+            
+            jComboBox1.removeAllItems();
+            MateriaData MD = new MateriaData();
+            for(int i=0;i<=MD.listarMaterias().size()-1;i++){
+                jComboBox1.addItem(MD.listarMaterias().get(i).getNombre());
+            }
             jComboBox1.setEnabled(true);
-        } else {
-            jComboBox1.setEnabled(false);
-        }
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        if(jCheckBox1.isSelected()){
             
         } else {
+            for (int i=DTM.getRowCount()-1;i>=0;i--) {
+            DTM.removeRow(i);
+            }
             AlumnoData AD = new AlumnoData();
             DTM.setColumnIdentifiers(new Object[]{"ID Alumno","DNI","Apellido","Nombre","Fecha de Nacimiento","Estado"});
             JTABLE.setModel(DTM);
             for(Alumno alumno:AD.listarAlumnos()){
             DTM.addRow(new Object[]{alumno.getIdAlumno(),alumno.getDni(),alumno.getApellido(),alumno.getNombre(),alumno.getFechaNac(),alumno.isEstado()});
+            }
+            jComboBox1.setEnabled(false);
         }
-        }
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     public void Llenar(){
-        
+        for (int i=DTM.getRowCount()-1;i>=0;i--) {
+            DTM.removeRow(i);
+        }
+        jComboBox1.removeAllItems();
+        MateriaData MD = new MateriaData();
+        for(int i=0;i<=MD.listarMaterias().size()-1;i++){
+            jComboBox1.addItem(MD.listarMaterias().get(i).getNombre());
+        }
         AlumnoData AD = new AlumnoData();
         DTM.setColumnIdentifiers(new Object[]{"ID Alumno","DNI","Apellido","Nombre","Fecha de Nacimiento","Estado"});
         JTABLE.setModel(DTM);
