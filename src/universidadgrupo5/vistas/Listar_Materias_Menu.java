@@ -31,7 +31,7 @@ public class Listar_Materias_Menu extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        JID = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         JNombre = new javax.swing.JTextField();
@@ -45,21 +45,21 @@ public class Listar_Materias_Menu extends javax.swing.JInternalFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
-        setPreferredSize(new java.awt.Dimension(282, 292));
+        setPreferredSize(new java.awt.Dimension(342, 292));
 
         jLabel1.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ID Materia");
         jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("ID");
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+        JID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        JID.setForeground(new java.awt.Color(153, 153, 153));
+        JID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        JID.setText("ID");
+        JID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        JID.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField1MouseClicked(evt);
+                JIDMouseClicked(evt);
             }
         });
 
@@ -76,7 +76,6 @@ public class Listar_Materias_Menu extends javax.swing.JInternalFrame {
         jLabel2.setText("Nombre");
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        JNombre.setEditable(false);
         JNombre.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         JNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -86,7 +85,6 @@ public class Listar_Materias_Menu extends javax.swing.JInternalFrame {
         jLabel3.setText("Año");
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        JAño.setEditable(false);
         JAño.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         JAño.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JAño.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -98,7 +96,6 @@ public class Listar_Materias_Menu extends javax.swing.JInternalFrame {
 
         jRadioButton1.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         jRadioButton1.setText("activo");
-        jRadioButton1.setEnabled(false);
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);
@@ -107,7 +104,6 @@ public class Listar_Materias_Menu extends javax.swing.JInternalFrame {
 
         jRadioButton2.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         jRadioButton2.setText("inactivo");
-        jRadioButton2.setEnabled(false);
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton2ActionPerformed(evt);
@@ -131,8 +127,7 @@ public class Listar_Materias_Menu extends javax.swing.JInternalFrame {
         });
 
         jButton4.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
-        jButton4.setText("Guardar");
-        jButton4.setEnabled(false);
+        jButton4.setText("Modificar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -149,27 +144,29 @@ public class Listar_Materias_Menu extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(JNombre))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(JAño))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jRadioButton1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jRadioButton2)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(JID, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(JNombre))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(JAño))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(1, 1, 1))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -177,8 +174,8 @@ public class Listar_Materias_Menu extends javax.swing.JInternalFrame {
                             .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,7 +183,7 @@ public class Listar_Materias_Menu extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1)
+                    .addComponent(JID)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,9 +223,9 @@ public class Listar_Materias_Menu extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
-    private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
-        jTextField1.setText("");
-    }//GEN-LAST:event_jTextField1MouseClicked
+    private void JIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JIDMouseClicked
+        JID.setText("");
+    }//GEN-LAST:event_JIDMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if(jButton1.isEnabled()){
@@ -243,8 +240,8 @@ public class Listar_Materias_Menu extends javax.swing.JInternalFrame {
             try{ //en este caso no es necesario un if condicional secundario, solamente necesito confirmar si el boton esta activo.
                 Materia materia = new Materia();
                 MateriaData MD = new MateriaData();
-                if(MD.buscar(Integer.parseInt(jTextField1.getText()))!=null){
-                    materia = MD.buscar(Integer.parseInt(jTextField1.getText()));
+                if(MD.buscar(Integer.parseInt(JID.getText()))!=null){
+                    materia = MD.buscar(Integer.parseInt(JID.getText()));
                     JNombre.setText(materia.getNombre());
                     JAño.setText(""+materia.getAnio());
                     if(materia.isEstado()==true){
@@ -265,7 +262,7 @@ public class Listar_Materias_Menu extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        if(jButton4.isEnabled()){ //en este if es lo mismo con el boton buscar, se necesita que este activo para que se ejecute el codigo.
+        if(jButton4.getText().equals("Guardar")){
             try{
                 boolean activo=false;
                 if(jRadioButton1.isSelected()){
@@ -293,6 +290,20 @@ public class Listar_Materias_Menu extends javax.swing.JInternalFrame {
             }catch(NumberFormatException NFE){
                 JOptionPane.showMessageDialog(this, "tiene que ser un numero.");
             }
+        } else if (jButton4.getText().equals("Modificar")){
+            try{
+                boolean activo = false;
+                if(jRadioButton1.isSelected()){
+                    activo=true;
+                } else if (jRadioButton2.isSelected()){
+                    activo=false;
+                }
+                Materia materia = new Materia(Integer.parseInt(JID.getText()),JNombre.getText(),Integer.parseInt(JAño.getText()),activo);
+                MateriaData MD = new MateriaData();
+                MD.modificar(materia);
+            }catch(NumberFormatException NFE){
+                JOptionPane.showMessageDialog(this, "Numero erroneo.");
+            }
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -300,7 +311,7 @@ public class Listar_Materias_Menu extends javax.swing.JInternalFrame {
         if(jButton1.isEnabled()){
             try{
                 MateriaData MD = new MateriaData();
-                MD.eliminarMateria(Integer.parseInt(jTextField1.getText()));
+                MD.eliminarMateria(Integer.parseInt(JID.getText()));
             }catch(NumberFormatException NFE){
                 JOptionPane.showMessageDialog(this, "Tiene que ser un numero.");
             }
@@ -308,33 +319,30 @@ public class Listar_Materias_Menu extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     public void newbutton(){
+        jButton4.setText("Guardar");
         jButton1.setEnabled(false);
-        jButton4.setEnabled(true);
         jButton3.setEnabled(false);
-        jTextField1.setText("");
-        jTextField1.setEditable(false);
+        JID.setText("");
+        JID.setEditable(false);
         JNombre.setText("");
         JAño.setText("");
-        JNombre.setEditable(true);
-        JAño.setEditable(true);
         jRadioButton1.setEnabled(true);
         jRadioButton2.setEnabled(true);
     }
     public void newbutton(String NICE){
+        jButton4.setText("Modificar");
         jButton1.setEnabled(true);
-        jButton4.setEnabled(false);
         jButton3.setEnabled(true);
-        jTextField1.setText("");
-        jTextField1.setEditable(true);
+        JID.setText("");
+        JID.setEditable(true);
         JNombre.setText("");
         JAño.setText("");
-        JNombre.setEditable(false);
-        JAño.setEditable(false);
         jRadioButton1.setEnabled(false);
         jRadioButton2.setEnabled(false);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JAño;
+    private javax.swing.JTextField JID;
     private javax.swing.JTextField JNombre;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -347,6 +355,5 @@ public class Listar_Materias_Menu extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
