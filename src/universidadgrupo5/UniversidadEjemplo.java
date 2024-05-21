@@ -4,10 +4,8 @@ package universidadgrupo5;
 import universidadgrupo5.accesoADatos.Conexion;
 import java.sql.*;
 import java.time.LocalDate;
-import universidadgrupo5.accesoADatos.AlumnoData;
-import universidadgrupo5.accesoADatos.MateriaData;
-import universidadgrupo5.entidades.Alumno;
-import universidadgrupo5.entidades.Materia;
+import universidadgrupo5.accesoADatos.*;
+import universidadgrupo5.entidades.*;
 
 
 
@@ -93,5 +91,50 @@ public class UniversidadEjemplo {
 //                  System.out.println("Nombre: " + materia.getNombre());
 //                  System.out.println("Año: " + materia.getAnio());
 //              }
+
+
+
+
+
+
+        // INSCRIPCIÓNDATA
+        
+//        AlumnoData ad = new AlumnoData();
+//        MateriaData md = new MateriaData();
+//        InscripcionData id = new InscripcionData();
+//        
+//        // REGISTRAR UNA INSCRIPCIÓN
+//        id.guardar(new Inscripcion(ad.buscar(3),md.buscar(3),5));
+//        
+//        // LISTAR INSCRIPCIONES
+//        for (Inscripcion inscripcion : id.obtenerInscripcion()) {
+//            if(inscripcion != null){System.out.println(inscripcion);}
+//        }
+//        
+//        // LISTAR INSCRIPCIONES POR ALUMNO
+//        for (Inscripcion inscripcion : id.obtenerInscripcionesPorAlumno(3)) {
+//            if(inscripcion != null){System.out.println(inscripcion);}
+//        }
+//        
+//        // LISTAR MATERIAS CURSADAS
+//        for (Materia materia : id.obtenerMateriasCursadas(3)) {
+//            if(materia != null){System.out.println(materia);}
+//        }
+//        
+//        // LISTAR MATERIAS NO CURSADAS
+//        for (Materia materia : id.obtenerMateriasNOCursadas(5)) {
+//            System.out.println(materia);
+//        }
+//        
+//        // ACTUALIZAR NOTA
+//        id.actualizarNota(3, 3, 7);
+//        
+//        // LISTAR ALUMNOS
+//        for (Alumno alumno : id.obtenerAlumnosXMateria(3)) {
+//            if(alumno != null){System.out.println(alumno);}
+//        }
+//        
+//        // BORRAR UNA INSCRIPCIÓN DE UN ALUMNO EN ALGUNA MATERIA
+//        id.borrarInscripcionMateria_Alumno(3, 3);
     }
-} 
+}
