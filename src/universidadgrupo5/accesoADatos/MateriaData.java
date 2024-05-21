@@ -56,7 +56,7 @@ public class MateriaData {
             ResultSet rs = ps.executeQuery();
             if (rs.next()){
                 materiaAxu = new Materia(rs.getInt("idMateria"), rs.getString("nombre"), rs.getInt("anio"), rs.getBoolean("estado"));
-               
+                return materiaAxu;
             }else{
                 JOptionPane.showMessageDialog(null, "No existe la materia con ese ID");
             }
@@ -67,7 +67,7 @@ public class MateriaData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
         }
         
-        return materiaAxu;
+        return null;
     }
     
     

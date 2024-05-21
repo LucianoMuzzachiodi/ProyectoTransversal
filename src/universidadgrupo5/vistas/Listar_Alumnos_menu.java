@@ -492,6 +492,7 @@ public class Listar_Alumnos_menu extends javax.swing.JInternalFrame {
     public void JButtonNew(){
         jSpinner1.setEnabled(true);
         JModificar.setEnabled(false);
+        jButton2.setEnabled(false);
         for(int dias=1;dias<=LD.getMonth().maxLength();dias++){
                 if(dias<=9){
                     jComboBox1.addItem("0"+dias);
@@ -527,6 +528,7 @@ public class Listar_Alumnos_menu extends javax.swing.JInternalFrame {
         
     }
     public void JButtonNew(String S){
+        jButton2.setEnabled(true);
         jSpinner1.setEnabled(false);
         JModificar.setEnabled(true);
         jComboBox1.removeAllItems();

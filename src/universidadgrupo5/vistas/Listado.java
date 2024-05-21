@@ -141,7 +141,11 @@ public class Listado extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
+        jDesktopPane1.removeAll();
+        jDesktopPane1.repaint();
+        Listar_Materias_Menu LMM = new Listar_Materias_Menu();
+        LMM.setVisible(true);
+        jDesktopPane1.add(LMM);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
