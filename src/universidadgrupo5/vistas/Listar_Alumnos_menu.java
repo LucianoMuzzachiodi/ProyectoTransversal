@@ -302,10 +302,11 @@ public class Listar_Alumnos_menu extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                     .addComponent(JNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addComponent(JEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                    .addComponent(jSpinner1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                        .addComponent(JEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
@@ -471,6 +472,8 @@ public class Listar_Alumnos_menu extends javax.swing.JInternalFrame {
                 JButtonBuscar.setEnabled(true);
                 JModificar.setEnabled(true);
                 JFecha.setEditable(false);
+                JID.setEditable(true);
+                JID.setEnabled(true);
             } else if (aux==1){
                 JAplicar.setVisible(false);
                 JAplicar.setEnabled(false);
@@ -478,6 +481,8 @@ public class Listar_Alumnos_menu extends javax.swing.JInternalFrame {
                 JButtonBuscar.setEnabled(true);
                 JModificar.setEnabled(true);
                 JFecha.setEditable(false);
+                JID.setEditable(true);
+                JID.setEnabled(true);
             }
         }catch(NumberFormatException NFE){
             

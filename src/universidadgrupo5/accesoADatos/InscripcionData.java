@@ -1,6 +1,7 @@
 package universidadgrupo5.accesoADatos;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.*;
 import javax.swing.*;
 import universidadgrupo5.entidades.*;
@@ -158,29 +159,25 @@ public class InscripcionData {
         }
     }
     public List<Alumno> obtenerAlumnosXMateria(int idMateria) {
-        List<Alumno> alumnos = new ArrayList<Alumno>();
+        List<Alumno> alumnos = new ArrayList();
         
-        String sql = "SELECT a.idAlumno, dni, nombre, apellido, fechaNacimiento, estado"
-                + "FROM inscripcion i, alumno a WHERE i.idAlumno = a.idAlumno AND idMateria = ? AND a.estado = 1";
+        String sql = "SELECT a.idAlumno,a.dni,a.apellido, a.nombre, a.fechaNacimiento, a.estado FROM alumno a, inscripcion i WHERE a.idAlumno = i.idAlumno AND i.idMateria = "+idMateria;
         try {
-            PreparedStatement ps = con.prepareCall(sql);
-            ps.setInt(1, idMateria);
+            PreparedStatement ps = con.prepareStatement(sql);
+            
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Alumno alumno = new Alumno();
-                alumno.setIdAlumno(rs.getInt("idAlumno"));
-                alumno.setDni(rs.getInt("dni"));
-                alumno.setApellido(rs.getString("apellido"));
-                alumno.setNombre(rs.getString("nombre"));
-                alumno.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
-                alumno.setEstado(rs.getBoolean("estado"));
+                Alumno alumno = new Alumno(rs.getInt("idAlumno"),rs.getInt("dni"),rs.getString("apellido"),rs.getString("nombre"),LocalDate.parse(String.valueOf(rs.getDate("fechaNacimiento"))),rs.getBoolean("estado"));
                 alumnos.add(alumno);
             }
+            
             ps.close();
+            return alumnos;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error en el acceso a la tabla Inscripción.");
+            System.err.println(e);
         }
-        return alumnos;
+        return null;
     }
 }
 
