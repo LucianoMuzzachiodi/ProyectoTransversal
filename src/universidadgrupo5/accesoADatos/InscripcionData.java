@@ -34,9 +34,10 @@ public class InscripcionData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en el acceso a la tabla Inscripción. "+ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error en el acceso a la tabla Inscripción. " + ex.getMessage());
         }
     }
+
     public List<Inscripcion> obtenerInscripcion() {
         List<Inscripcion> inscripciones = new ArrayList<Inscripcion>();
 
@@ -56,10 +57,11 @@ public class InscripcionData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en el acceso a la tabla Inscripción. "+ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error en el acceso a la tabla Inscripción. " + ex.getMessage());
         }
         return inscripciones;
     }
+
     public List<Inscripcion> obtenerInscripcionesPorAlumno(int idAlumno) {
         List<Inscripcion> inscripciones = new ArrayList<Inscripcion>();
 
@@ -80,10 +82,11 @@ public class InscripcionData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en el acceso a la tabla Inscripción. "+ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error en el acceso a la tabla Inscripción. " + ex.getMessage());
         }
         return inscripciones;
     }
+
     public List<Materia> obtenerMateriasCursadas(int idAlumno) {
         List<Materia> materias = new ArrayList<Materia>();
 
@@ -102,10 +105,11 @@ public class InscripcionData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en el acceso a la tabla Inscripción. "+ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error en el acceso a la tabla Inscripción. " + ex.getMessage());
         }
         return materias;
     }
+
     public List<Materia> obtenerMateriasNOCursadas(int idAlumno) {
         List<Materia> materias = new ArrayList<Materia>();
 
@@ -124,10 +128,11 @@ public class InscripcionData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en el acceso a la tabla Inscripción. "+ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error en el acceso a la tabla Inscripción. " + ex.getMessage());
         }
         return materias;
     }
+
     public void borrarInscripcionMateria_Alumno(int idAlumno, int idMateria) {
         String sql = "DELETE FROM inscripcion WHERE idAlumno = ? AND idMateria = ?";
         try {
@@ -140,9 +145,10 @@ public class InscripcionData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en el acceso a la tabla Inscripción. "+ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error en el acceso a la tabla Inscripción. " + ex.getMessage());
         }
     }
+
     public void actualizarNota(int idAlumno, int idMateria, double nota) {
         String sql = "UPDATE inscripcion SET nota = ? WHERE idAlumno = ? AND idMateria = ?";
         try {
@@ -159,19 +165,20 @@ public class InscripcionData {
             JOptionPane.showMessageDialog(null, "Error al actualizar la nota.");
         }
     }
+
     public List<Alumno> obtenerAlumnosXMateria(int idMateria) {
         List<Alumno> alumnos = new ArrayList();
-        
-        String sql = "SELECT a.idAlumno,a.dni,a.apellido, a.nombre, a.fechaNacimiento, a.estado FROM alumno a, inscripcion i WHERE a.idAlumno = i.idAlumno AND i.idMateria = "+idMateria;
+
+        String sql = "SELECT a.idAlumno,a.dni,a.apellido, a.nombre, a.fechaNacimiento, a.estado FROM alumno a, inscripcion i WHERE a.idAlumno = i.idAlumno AND i.idMateria = " + idMateria;
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            
+
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Alumno alumno = new Alumno(rs.getInt("idAlumno"),rs.getInt("dni"),rs.getString("apellido"),rs.getString("nombre"),LocalDate.parse(String.valueOf(rs.getDate("fechaNacimiento"))),rs.getBoolean("estado"));
+                Alumno alumno = new Alumno(rs.getInt("idAlumno"), rs.getInt("dni"), rs.getString("apellido"), rs.getString("nombre"), LocalDate.parse(String.valueOf(rs.getDate("fechaNacimiento"))), rs.getBoolean("estado"));
                 alumnos.add(alumno);
             }
-            
+
             ps.close();
             return alumnos;
         } catch (SQLException ex) {

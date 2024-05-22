@@ -48,7 +48,6 @@ public class Materia {
     @Override
     public String toString() {
         String activo;
-//        if(this.estado){activo = "Activo";}else{activo = "Inactivo";}
         if(estado){activo = "Activo";}else{activo = "Inactivo";}
         return "\nID: "+idMateria
                 + "\nMateria: "+nombre

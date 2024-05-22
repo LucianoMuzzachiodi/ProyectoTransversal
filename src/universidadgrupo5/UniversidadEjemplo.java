@@ -1,4 +1,3 @@
-
 package universidadgrupo5;
 
 import universidadgrupo5.accesoADatos.Conexion;
@@ -7,14 +6,8 @@ import java.time.LocalDate;
 import universidadgrupo5.accesoADatos.*;
 import universidadgrupo5.entidades.*;
 
-
-
-
 public class UniversidadEjemplo {
-
-    
     public static void main(String[] args) throws SQLException{
-                 
             Connection con = Conexion.getConexion();
             
            
@@ -137,4 +130,4 @@ public class UniversidadEjemplo {
 //        // BORRAR UNA INSCRIPCIÓN DE UN ALUMNO EN ALGUNA MATERIA
 //        id.borrarInscripcionMateria_Alumno(4, 5);
     }
-} 
+}
