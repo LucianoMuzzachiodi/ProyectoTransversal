@@ -70,7 +70,7 @@ public class UniversidadEjemplo {
 
 
              //BUSCAR MATERIA
-             //System.out.println(mat.buscar(4));
+//             System.out.println(mat.buscar(2));
              
              
              
@@ -102,9 +102,9 @@ public class UniversidadEjemplo {
 //        AlumnoData ad = new AlumnoData();
 //        MateriaData md = new MateriaData();
 //        InscripcionData id = new InscripcionData();
-//        
-//        // REGISTRAR UNA INSCRIPCIÓN
-//        id.guardar(new Inscripcion(ad.buscar(3),md.buscar(3),5));
+////        
+////        // REGISTRAR UNA INSCRIPCIÓN
+//        id.guardar(new Inscripcion(ad.buscar(7),md.buscar(2),8));
 //        
 //        // LISTAR INSCRIPCIONES
 //        for (Inscripcion inscripcion : id.obtenerInscripcion()) {
@@ -112,29 +112,29 @@ public class UniversidadEjemplo {
 //        }
 //        
 //        // LISTAR INSCRIPCIONES POR ALUMNO
-//        for (Inscripcion inscripcion : id.obtenerInscripcionesPorAlumno(3)) {
+//        for (Inscripcion inscripcion : id.obtenerInscripcionesPorAlumno(4)) {
 //            if(inscripcion != null){System.out.println(inscripcion);}
 //        }
 //        
 //        // LISTAR MATERIAS CURSADAS
-//        for (Materia materia : id.obtenerMateriasCursadas(3)) {
+//            for (Materia materia : id.obtenerMateriasCursadas(4)) {
 //            if(materia != null){System.out.println(materia);}
-//        }
+//            }
 //        
 //        // LISTAR MATERIAS NO CURSADAS
-//        for (Materia materia : id.obtenerMateriasNOCursadas(5)) {
+//        for (Materia materia : id.obtenerMateriasNOCursadas(4)) {
 //            System.out.println(materia);
 //        }
 //        
 //        // ACTUALIZAR NOTA
-//        id.actualizarNota(3, 3, 7);
+//        id.actualizarNota(4, 5, 5);
 //        
-//        // LISTAR ALUMNOS
-//        for (Alumno alumno : id.obtenerAlumnosXMateria(3)) {
+//        // LISTAR ALUMNOS POR MATERIA
+//        for (Alumno alumno : id.obtenerAlumnosXMateria(5)) {
 //            if(alumno != null){System.out.println(alumno);}
 //        }
 //        
 //        // BORRAR UNA INSCRIPCIÓN DE UN ALUMNO EN ALGUNA MATERIA
-//        id.borrarInscripcionMateria_Alumno(3, 3);
+//        id.borrarInscripcionMateria_Alumno(4, 5);
     }
-}
+} 

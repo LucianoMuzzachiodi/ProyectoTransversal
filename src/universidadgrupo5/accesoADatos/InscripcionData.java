@@ -18,7 +18,7 @@ public class InscripcionData {
 
     public void guardar(Inscripcion inscripcion) {
         String sql = "INSERT INTO `inscripcion`(`idAlumno`, `idMateria`, `nota`)"
-                + "VALUES (?, ?, ?)";
+                + " VALUES (?, ?, ?)";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -87,7 +87,7 @@ public class InscripcionData {
     public List<Materia> obtenerMateriasCursadas(int idAlumno) {
         List<Materia> materias = new ArrayList<Materia>();
 
-        String sql = "SELECT inscripcion.idMateria, anio, nombre FROM inscripcion, materia WHERE inscripcion.idMateria = materia.idMateria AND inscripcion.idAlumno = ?";
+        String sql = "SELECT inscripcion.idMateria, anio, nombre, materia.estado FROM inscripcion, materia WHERE inscripcion.idMateria = materia.idMateria AND inscripcion.idAlumno = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idAlumno);
@@ -97,6 +97,7 @@ public class InscripcionData {
                 materia.setIdMateria(rs.getInt("idMateria"));
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnio(rs.getInt("anio"));
+                materia.setEstado(rs.getBoolean("estado"));
                 materias.add(materia);
             }
             ps.close();

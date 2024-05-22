@@ -63,7 +63,7 @@ public class AlumnoData {
                
                 return alumnoAxu;
             }else{
-                JOptionPane.showMessageDialog(null, "No existe la materia con ese ID");
+                JOptionPane.showMessageDialog(null, "No existe el alumno con ese ID");
             }
             ps.close();
         } catch (SQLException ex) {
