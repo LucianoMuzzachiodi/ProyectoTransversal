@@ -4,6 +4,7 @@
  */
 package universidadgrupo5.vistas;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import universidadgrupo5.accesoADatos.AlumnoData;
 import universidadgrupo5.accesoADatos.InscripcionData;
@@ -260,7 +261,8 @@ public class Listado_Inscripcion extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(jButton1.isEnabled()){
-            Alumno alumno = (Alumno) JComboAlumnos.getSelectedItem();
+            if(jTable1.getSelectedRow()!=-1){
+                Alumno alumno = (Alumno) JComboAlumnos.getSelectedItem();
             InscripcionData ID = new InscripcionData();
             Materia materia = ID.obtenerMateriasNOCursadas(alumno.getIdAlumno()).get(jTable1.getSelectedRow());
             Inscripcion inscripcion = new Inscripcion(alumno,materia,0);
@@ -272,6 +274,9 @@ public class Listado_Inscripcion extends javax.swing.JInternalFrame {
             }
             for(Materia materia2:ID.obtenerMateriasNOCursadas(alumno.getIdAlumno())){
                 DTM.addRow(new Object[]{materia2.getIdMateria(),materia2.getNombre(),materia2.getAnio()});
+            }
+            } else {
+                JOptionPane.showMessageDialog(this, "selecciona una materia.");
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -307,7 +312,8 @@ public class Listado_Inscripcion extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if(jButton2.isEnabled()){
-            InscripcionData ID = new InscripcionData();
+            if(jTable1.getSelectedRow()!=-1){
+                InscripcionData ID = new InscripcionData();
             Alumno alumno = (Alumno) JComboAlumnos.getSelectedItem();
             ID.borrarInscripcionMateria_Alumno(alumno.getIdAlumno(), ID.obtenerMateriasCursadas(alumno.getIdAlumno()).get(jTable1.getSelectedRow()).getIdMateria());
             AlumnoData AD = new AlumnoData();
@@ -316,6 +322,9 @@ public class Listado_Inscripcion extends javax.swing.JInternalFrame {
             }
             for(Materia materia:ID.obtenerMateriasCursadas(alumno.getIdAlumno())){
                 DTM.addRow(new Object[]{materia.getIdMateria(),materia.getNombre(),materia.getAnio()});
+            }
+            } else {
+                JOptionPane.showMessageDialog(this, "selecciona una materia.");
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
