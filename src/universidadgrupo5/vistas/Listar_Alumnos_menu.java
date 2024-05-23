@@ -26,7 +26,7 @@ public class Listar_Alumnos_menu extends javax.swing.JInternalFrame {
         jComboBox2.setEnabled(false);
         jComboBox1.setEnabled(false);
         JGuardar.setEnabled(false);
-         JAplicar.setVisible(false);
+        JAplicar.setVisible(false);
     }
 
     /**
@@ -373,7 +373,7 @@ public class Listar_Alumnos_menu extends javax.swing.JInternalFrame {
             }
             
         }catch(NumberFormatException NFE){
-            JOptionPane.showMessageDialog(this, "tiene que ser un numero.");
+            JOptionPane.showMessageDialog(this, "Tiene que ser un número.");
         }
     }//GEN-LAST:event_JButtonBuscarActionPerformed
 
@@ -403,9 +403,9 @@ public class Listar_Alumnos_menu extends javax.swing.JInternalFrame {
             }catch(NumberFormatException NFE){
                 if(JID.getText().isBlank() || Integer.parseInt(JID.getText())<=0){
                     if(JID.getText().isBlank()){
-                        JOptionPane.showMessageDialog(this, "faltan datos.");
+                        JOptionPane.showMessageDialog(this, "Faltan datos.");
                     }else if(Integer.parseInt(JID.getText())<=0){
-                        JOptionPane.showMessageDialog(this, "Numero invalido.");
+                        JOptionPane.showMessageDialog(this, "Número inválido.");
                     }
                 }
             }
@@ -435,7 +435,7 @@ public class Listar_Alumnos_menu extends javax.swing.JInternalFrame {
                 jSpinner1.setEnabled(true);
             }
         }catch(NumberFormatException NFE){
-            JOptionPane.showMessageDialog(this, "ID invalido.");
+            JOptionPane.showMessageDialog(this, "ID inválido.");
             
         }
         
@@ -453,15 +453,15 @@ public class Listar_Alumnos_menu extends javax.swing.JInternalFrame {
             jSpinner1.setValue(1);
         }
         if(aux==0){
-            JEstado.setText("false");
+            JEstado.setText("Inactivo");
         } else if (aux==1){
-            JEstado.setText("true");
+            JEstado.setText("Activo");
         }
     }//GEN-LAST:event_jSpinner1StateChanged
 
     private void JAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JAplicarActionPerformed
         try{
-            int aux = JOptionPane.showConfirmDialog(this, "¿realmente quieres modificarlo?");
+            int aux = JOptionPane.showConfirmDialog(this, "¿Realmente quieres modificarlo?");
             if(aux==0){
                 AlumnoData AD = new AlumnoData();
                 Alumno alumno = new Alumno(Integer.parseInt(JID.getText()),Integer.parseInt(JDNI.getText()),JApellido.getText(),JNombre.getText(),LocalDate.parse((String)JFecha.getText()),Boolean.parseBoolean(JEstado.getText()));
@@ -497,18 +497,18 @@ public class Listar_Alumnos_menu extends javax.swing.JInternalFrame {
                 if(dias<=9){
                     jComboBox1.addItem("0"+dias);
                 } else {
-                jComboBox1.addItem(""+dias);
+                    jComboBox1.addItem(""+dias);
                 }
             }
             for(int mes=1;mes<=12;mes++){
                 if(mes<=9){
-                jComboBox2.addItem("0"+mes);
+                    jComboBox2.addItem("0"+mes);
                 } else {
-                jComboBox2.addItem(""+mes);
+                    jComboBox2.addItem(""+mes);
                 }
             }
             for(int anio=1995;anio<=LD.getYear();anio++){
-            jComboBox3.addItem(""+anio);
+                jComboBox3.addItem(""+anio);
             }
         JID.setEditable(false);
         JButtonBuscar.setEnabled(false);

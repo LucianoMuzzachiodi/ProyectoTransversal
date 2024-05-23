@@ -1,32 +1,17 @@
 package universidadgrupo5.vistas;
+
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import universidadgrupo5.accesoADatos.AlumnoData;
-import universidadgrupo5.accesoADatos.InscripcionData;
-import universidadgrupo5.accesoADatos.MateriaData;
-import universidadgrupo5.entidades.Alumno;
-import universidadgrupo5.entidades.Materia;
+import universidadgrupo5.accesoADatos.*;
+import universidadgrupo5.entidades.*;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
-
-/**
- *
- * @author DANIELALEJANDROMIRAN
- */
 public class Listar_Alumnos extends javax.swing.JInternalFrame {
     DefaultTableModel DTM = new DefaultTableModel();
-    /**
-     * Creates new form Listar_Alumnos
-     */
+
     public Listar_Alumnos() {
         initComponents();
-        for (int i=DTM.getRowCount()-1;i>=0;i--) {
-            DTM.removeRow(i);
-        }
-        Llenar();
+        vaciar();
+        llenar();
     }
 
     /**
@@ -90,7 +75,7 @@ public class Listar_Alumnos extends javax.swing.JInternalFrame {
         });
 
         jCheckBox2.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
-        jCheckBox2.setText("buscar por DNI");
+        jCheckBox2.setText("Buscar por DNI");
         jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox2ActionPerformed(evt);
@@ -148,14 +133,13 @@ public class Listar_Alumnos extends javax.swing.JInternalFrame {
             JComboMaterias.setEnabled(true);
             
         } else {
-            for (int i=DTM.getRowCount()-1;i>=0;i--) {
-                DTM.removeRow(i);
-            }
-            AlumnoData AD = new AlumnoData();
+            vaciar();
+            AlumnoData AD = new AlumnoData(); String estado;
             DTM.setColumnIdentifiers(new Object[]{"ID Alumno","DNI","Apellido","Nombre","Fecha de Nacimiento","Estado"});
             JTABLE.setModel(DTM);
-            for(Alumno alumno:AD.listarAlumnos()){
-                DTM.addRow(new Object[]{alumno.getIdAlumno(),alumno.getDni(),alumno.getApellido(),alumno.getNombre(),alumno.getFechaNac(),alumno.isEstado()});
+            for(Alumno alumno : AD.listarAlumnos()){
+                if(alumno.isEstado()){estado = "Activo";}else{estado = "Inactivo";}
+                DTM.addRow(new Object[]{alumno.getIdAlumno(),alumno.getDni(),alumno.getApellido(),alumno.getNombre(),alumno.getFechaNac(),estado});
             }
             JComboMaterias.setEnabled(false);
         }
@@ -163,17 +147,16 @@ public class Listar_Alumnos extends javax.swing.JInternalFrame {
 
     private void JComboMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JComboMateriasActionPerformed
         if(jCheckBox1.isSelected() && JComboMaterias.getSelectedItem()!=null){
-            for (int i=DTM.getRowCount()-1;i>=0;i--) {
-                DTM.removeRow(i);
-            }
+            vaciar();
             InscripcionData ID = new InscripcionData();
             ArrayList<Alumno> alumno = new ArrayList();
             if(ID.obtenerAlumnosXMateria(Integer.parseInt(((String)JComboMaterias.getSelectedItem()).substring(0,1)))!=null){
                 alumno = new ArrayList(ID.obtenerAlumnosXMateria(Integer.parseInt(((String)JComboMaterias.getSelectedItem()).substring(0,1))));
             }
-            
-            for(Alumno backslide:alumno){
-            DTM.addRow(new Object[]{backslide.getIdAlumno(),backslide.getDni(),backslide.getApellido(),backslide.getNombre(),backslide.getFechaNac(),backslide.isEstado()});
+            String estado;
+            for(Alumno backslide : alumno){
+                if(backslide.isEstado()){estado = "Activo";}else{estado = "Inactivo";}
+                DTM.addRow(new Object[]{backslide.getIdAlumno(),backslide.getDni(),backslide.getApellido(),backslide.getNombre(),backslide.getFechaNac(),estado});
             }
         }
     }//GEN-LAST:event_JComboMateriasActionPerformed
@@ -183,14 +166,14 @@ public class Listar_Alumnos extends javax.swing.JInternalFrame {
             jCheckBox1.setSelected(false);
             jTextField1.setEnabled(true);
         } else {
-            for (int i=DTM.getRowCount()-1;i>=0;i--) {
-                DTM.removeRow(i);
-            }
+            vaciar();
             AlumnoData AD = new AlumnoData();
             DTM.setColumnIdentifiers(new Object[]{"ID Alumno","DNI","Apellido","Nombre","Fecha de Nacimiento","Estado"});
             JTABLE.setModel(DTM);
+            String estado;
             for(Alumno alumno:AD.listarAlumnos()){
-                DTM.addRow(new Object[]{alumno.getIdAlumno(),alumno.getDni(),alumno.getApellido(),alumno.getNombre(),alumno.getFechaNac(),alumno.isEstado()});
+                if(alumno.isEstado()){estado = "Activo";}else{estado = "Inactivo";}
+                DTM.addRow(new Object[]{alumno.getIdAlumno(),alumno.getDni(),alumno.getApellido(),alumno.getNombre(),alumno.getFechaNac(),estado});
             }
             JComboMaterias.setEnabled(false);
             jTextField1.setEnabled(false);
@@ -198,17 +181,15 @@ public class Listar_Alumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-        
         if(jTextField1.isEnabled()){
-            
             try{
                 AlumnoData AD = new AlumnoData();
                 if(evt.getKeyCode()==10){
-                    for (int i=DTM.getRowCount()-1;i>=0;i--) {
-                    DTM.removeRow(i);
-                    }
-                    Alumno alu = AD.buscarDni(Integer.parseInt(jTextField1.getText()));
-                    DTM.addRow(new Object[]{alu.getIdAlumno(),alu.getDni(),alu.getApellido(),alu.getNombre(),alu.getFechaNac(),alu.isEstado()});
+                    vaciar();
+                    Alumno alumno = AD.buscarDni(Integer.parseInt(jTextField1.getText()));
+                    String estado;
+                    if(alumno.isEstado()){estado = "Activo";}else{estado = "Inactivo";}
+                    DTM.addRow(new Object[]{alumno.getIdAlumno(),alumno.getDni(),alumno.getApellido(),alumno.getNombre(),alumno.getFechaNac(),estado});
                 }
             }catch(NumberFormatException NFE){
                 System.err.println(NFE);
@@ -216,10 +197,8 @@ public class Listar_Alumnos extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jTextField1KeyPressed
 
-    public void Llenar(){
-        for (int i=DTM.getRowCount()-1;i>=0;i--) {
-            DTM.removeRow(i);
-        }
+    public void llenar(){
+        vaciar();
         JComboMaterias.removeAllItems();
         MateriaData MD = new MateriaData();
         for(int i=0;i<=MD.listarMaterias().size()-1;i++){
@@ -228,10 +207,16 @@ public class Listar_Alumnos extends javax.swing.JInternalFrame {
         AlumnoData AD = new AlumnoData();
         DTM.setColumnIdentifiers(new Object[]{"ID Alumno","DNI","Apellido","Nombre","Fecha de Nacimiento","Estado"});
         JTABLE.setModel(DTM);
+        String estado;
         for(Alumno alumno:AD.listarAlumnos()){
-            DTM.addRow(new Object[]{alumno.getIdAlumno(),alumno.getDni(),alumno.getApellido(),alumno.getNombre(),alumno.getFechaNac(),alumno.isEstado()});
+            if(alumno.isEstado()){estado = "Activo";}else{estado = "Inactivo";}
+            DTM.addRow(new Object[]{alumno.getIdAlumno(),alumno.getDni(),alumno.getApellido(),alumno.getNombre(),alumno.getFechaNac(),estado});
+        }        
+    }
+    public void vaciar(){
+        for (int i = DTM.getRowCount() - 1; i >= 0; i--) {
+            DTM.removeRow(i);
         }
-        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> JComboMaterias;

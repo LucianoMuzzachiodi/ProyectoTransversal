@@ -7,7 +7,6 @@ import universidadgrupo5.accesoADatos.*;
 public class Listar_Materias extends javax.swing.JInternalFrame {
     DefaultTableModel modelo = new DefaultTableModel();
     MateriaData materiaData = new MateriaData();
-    Materia materia = new Materia();
     
     public Listar_Materias() {
         initComponents();
