@@ -1,7 +1,5 @@
 package universidadgrupo5.vistas;
 
-import universidadgrupo5.accesoADatos.AlumnoData;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -18,7 +16,6 @@ public class Listado extends javax.swing.JFrame {
      */
     public Listado() {
         initComponents();
-        AlumnoData AD = new AlumnoData();
     }
 
     /**
@@ -136,6 +133,11 @@ public class Listado extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Salir");
+        jMenu4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu4ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -202,6 +204,10 @@ public class Listado extends javax.swing.JFrame {
         listarMaterias.setVisible(true);
         jDesktopPane1.add(listarMaterias);
     }//GEN-LAST:event_jMenuListarMateriasActionPerformed
+
+    private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jMenu4ActionPerformed
 
     /**
      * @param args the command line arguments

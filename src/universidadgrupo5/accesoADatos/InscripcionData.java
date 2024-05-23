@@ -100,7 +100,7 @@ public class InscripcionData {
                 materia.setIdMateria(rs.getInt("idMateria"));
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnio(rs.getInt("anio"));
-                materia.setEstado(rs.getBoolean("estado"));
+                materia.setActivo(rs.getBoolean("estado"));
                 materias.add(materia);
             }
             ps.close();
