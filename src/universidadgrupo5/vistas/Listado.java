@@ -38,6 +38,7 @@ public class Listado extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuListarMaterias = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -100,6 +101,15 @@ public class Listado extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem4);
+
+        jMenuListarMaterias.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
+        jMenuListarMaterias.setText("Listar Materias");
+        jMenuListarMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuListarMateriasActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuListarMaterias);
 
         jMenuBar1.add(jMenu2);
 
@@ -185,6 +195,14 @@ public class Listado extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
+    private void jMenuListarMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuListarMateriasActionPerformed
+        jDesktopPane1.removeAll();
+        jDesktopPane1.repaint();
+        Listar_Materias listarMaterias = new Listar_Materias();
+        listarMaterias.setVisible(true);
+        jDesktopPane1.add(listarMaterias);
+    }//GEN-LAST:event_jMenuListarMateriasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -236,5 +254,6 @@ public class Listado extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuListarMaterias;
     // End of variables declaration//GEN-END:variables
 }
