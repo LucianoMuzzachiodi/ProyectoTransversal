@@ -9,6 +9,7 @@ import universidadgrupo5.accesoADatos.AlumnoData;
 import universidadgrupo5.accesoADatos.InscripcionData;
 import universidadgrupo5.accesoADatos.MateriaData;
 import universidadgrupo5.entidades.Alumno;
+import universidadgrupo5.entidades.Inscripcion;
 import universidadgrupo5.entidades.Materia;
 
 /**
@@ -108,9 +109,16 @@ public class Listado_Inscripcion extends javax.swing.JInternalFrame {
                 "ID", "Nombre", "Año", "Estado"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Boolean.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -151,6 +159,11 @@ public class Listado_Inscripcion extends javax.swing.JInternalFrame {
 
         jButton2.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         jButton2.setText("Anular Inscripcion");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton2);
 
         jPanel5.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -246,10 +259,21 @@ public class Listado_Inscripcion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        MateriaData MD = new MateriaData();
-        AlumnoData AD = new AlumnoData();
-        
-        System.out.println();
+        if(jButton1.isEnabled()){
+            Alumno alumno = (Alumno) JComboAlumnos.getSelectedItem();
+            InscripcionData ID = new InscripcionData();
+            Materia materia = ID.obtenerMateriasNOCursadas(alumno.getIdAlumno()).get(jTable1.getSelectedRow());
+            Inscripcion inscripcion = new Inscripcion(alumno,materia,0);
+            System.out.println();
+            ID.guardar(inscripcion);
+            AlumnoData AD = new AlumnoData();
+            for (int i = DTM.getRowCount() - 1; i >= 0; i--) {
+                DTM.removeRow(i);
+            }
+            for(Materia materia2:ID.obtenerMateriasNOCursadas(alumno.getIdAlumno())){
+                DTM.addRow(new Object[]{materia2.getIdMateria(),materia2.getNombre(),materia2.getAnio()});
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void JComboAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JComboAlumnosActionPerformed
@@ -280,6 +304,21 @@ public class Listado_Inscripcion extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_JComboAlumnosActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if(jButton2.isEnabled()){
+            InscripcionData ID = new InscripcionData();
+            Alumno alumno = (Alumno) JComboAlumnos.getSelectedItem();
+            ID.borrarInscripcionMateria_Alumno(alumno.getIdAlumno(), ID.obtenerMateriasCursadas(alumno.getIdAlumno()).get(jTable1.getSelectedRow()).getIdMateria());
+            AlumnoData AD = new AlumnoData();
+            for (int i = DTM.getRowCount() - 1; i >= 0; i--) {
+                DTM.removeRow(i);
+            }
+            for(Materia materia:ID.obtenerMateriasCursadas(alumno.getIdAlumno())){
+                DTM.addRow(new Object[]{materia.getIdMateria(),materia.getNombre(),materia.getAnio()});
+            }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     public void Llenar(){
