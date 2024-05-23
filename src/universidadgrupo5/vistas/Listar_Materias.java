@@ -83,7 +83,7 @@ public class Listar_Materias extends javax.swing.JInternalFrame {
             jRadio1.setSelected(false);
             
             for (Materia materias : materiaData.listarMaterias()) {
-                if(!materias.isEstado()){
+                if(!materias.isActivo()){
                     modelo.addRow(new Object[]{materias.getIdMateria(),materias.getNombre(),materias.getAnio()});
                 }
             }
@@ -97,7 +97,7 @@ public class Listar_Materias extends javax.swing.JInternalFrame {
             jRadio2.setSelected(false);
             
             for (Materia materias : materiaData.listarMaterias()) {
-                if(materias.isEstado()){
+                if(materias.isActivo()){
                     modelo.addRow(new Object[]{materias.getIdMateria(),materias.getNombre(),materias.getAnio()});
                 }
             }

@@ -1,23 +1,22 @@
 package universidadgrupo5.entidades;
 public class Materia {
-    private int idMateria;
+    private int idMateria, anio;
     private String nombre;
-    private int anio;
-    private boolean estado;
+    private boolean activo;
 
     public Materia() {}
 
-    public Materia(int idMateria, String nombre, int anio, boolean estado) {
+    public Materia(int idMateria, String nombre, int anio, boolean activo) {
         this.idMateria = idMateria;
         this.nombre = nombre;
         this.anio = anio;
-        this.estado = estado;
+        this.activo = activo;
     }
 
-    public Materia(String nombre, int anio, boolean estado) {
+    public Materia(String nombre, int anio, boolean activo) {
         this.nombre = nombre;
         this.anio = anio;
-        this.estado = estado;
+        this.activo = activo;
     }
 
     public int getIdMateria() {
@@ -38,20 +37,20 @@ public class Materia {
     public void setAnio(int anio) {
         this.anio = anio;
     }
-    public boolean isEstado() {
-        return estado;
+    public boolean isActivo() {
+        return activo;
     }
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     @Override
     public String toString() {
-        String activo;
-        if(estado){activo = "Activo";}else{activo = "Inactivo";}
+        String estado;
+        if(this.activo){estado = "Activa";}else{estado = "Inactiva";}
         return "\nID: "+idMateria
                 + "\nMateria: "+nombre
                 + "\nAño: "+anio
-                + "\nEstado: " + activo;
+                + "\nEstado: " + estado;
     }
 }
