@@ -70,10 +70,10 @@ public class Alumno {
         String activo;
         if(estado){activo = "Activo";}else{activo = "Inactivo";}
         return "\nID: "+idAlumno
-                + "\nNombre: "+nombre
-                + "\nApellido: "+apellido
-                + "\nDNI: "+dni
-                + "\nFecha de nacimiento: "+fechaNac
-                + "\nEstado: " + activo;
+                + "\n, Nombre: "+nombre
+                + "\n, Apellido: "+apellido
+                + "\n, DNI: "+dni
+                + "\n, Fecha de nacimiento: "+fechaNac
+                + "\n, Estado: " + activo;
     }
 }

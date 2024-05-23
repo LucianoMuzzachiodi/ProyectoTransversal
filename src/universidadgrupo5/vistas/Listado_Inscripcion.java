@@ -6,6 +6,7 @@ package universidadgrupo5.vistas;
 
 import javax.swing.table.DefaultTableModel;
 import universidadgrupo5.accesoADatos.AlumnoData;
+import universidadgrupo5.accesoADatos.InscripcionData;
 import universidadgrupo5.accesoADatos.MateriaData;
 import universidadgrupo5.entidades.Alumno;
 import universidadgrupo5.entidades.Materia;
@@ -54,6 +55,11 @@ public class Listado_Inscripcion extends javax.swing.JInternalFrame {
         jLabel1.setText("Selecciona un Alumno");
 
         JComboAlumnos.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
+        JComboAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JComboAlumnosActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -121,6 +127,11 @@ public class Listado_Inscripcion extends javax.swing.JInternalFrame {
 
         jButton1.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         jButton1.setText("Inscribir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton1);
 
         jPanel4.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -199,36 +210,101 @@ public class Listado_Inscripcion extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        if(jRadioButton2.isSelected()){
-            jRadioButton1.setSelected(true);
-            jRadioButton2.setSelected(false);
-            
-        }
+        jButton1.setEnabled(false);
+        jButton2.setEnabled(true);
+        jRadioButton1.setSelected(true);
+        jRadioButton2.setSelected(false);
+            if(jRadioButton1.isSelected()){
+            InscripcionData ID = new InscripcionData();
+            AlumnoData AD = new AlumnoData();
+            for (int i = DTM.getRowCount() - 1; i >= 0; i--) {
+                DTM.removeRow(i);
+            }
+            Alumno alumno = (Alumno) JComboAlumnos.getSelectedItem();
+            for(Materia materia:ID.obtenerMateriasCursadas(alumno.getIdAlumno())){
+                DTM.addRow(new Object[]{materia.getIdMateria(),materia.getNombre(),materia.getAnio()});
+            }
+            }
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        if(jRadioButton1.isSelected()){
-            jRadioButton2.setSelected(true);
-            jRadioButton1.setSelected(false);
+        jButton1.setEnabled(true);
+        jButton2.setEnabled(false);
+        jRadioButton2.setSelected(true);
+        jRadioButton1.setSelected(false);
+        if(jRadioButton2.isSelected()){
+            InscripcionData ID = new InscripcionData();
+            AlumnoData AD = new AlumnoData();
+            for (int i = DTM.getRowCount() - 1; i >= 0; i--) {
+                DTM.removeRow(i);
+            }
+            Alumno alumno = (Alumno) JComboAlumnos.getSelectedItem();
+            for(Materia materia:ID.obtenerMateriasNOCursadas(alumno.getIdAlumno())){
+                DTM.addRow(new Object[]{materia.getIdMateria(),materia.getNombre(),materia.getAnio()});
+            }
         }
     }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        MateriaData MD = new MateriaData();
+        AlumnoData AD = new AlumnoData();
+        
+        System.out.println();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void JComboAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JComboAlumnosActionPerformed
+        if(jRadioButton1.isSelected()){
+            InscripcionData ID = new InscripcionData();
+            AlumnoData AD = new AlumnoData();
+            for (int i = DTM.getRowCount() - 1; i >= 0; i--) {
+            DTM.removeRow(i);
+            }
+            if(jRadioButton1.isSelected()){
+            for (int i = DTM.getRowCount() - 1; i >= 0; i--) {
+                DTM.removeRow(i);
+            }
+            Alumno alumno = (Alumno) JComboAlumnos.getSelectedItem();
+            for(Materia materia:ID.obtenerMateriasCursadas(alumno.getIdAlumno())){
+                DTM.addRow(new Object[]{materia.getIdMateria(),materia.getNombre(),materia.getAnio()});
+            }
+            }
+        }else if (jRadioButton2.isSelected()){
+            InscripcionData ID = new InscripcionData();
+            AlumnoData AD = new AlumnoData();
+            for (int i = DTM.getRowCount() - 1; i >= 0; i--) {
+                DTM.removeRow(i);
+            }
+            Alumno alumno = (Alumno) JComboAlumnos.getSelectedItem();
+            for(Materia materia:ID.obtenerMateriasNOCursadas(alumno.getIdAlumno())){
+                DTM.addRow(new Object[]{materia.getIdMateria(),materia.getNombre(),materia.getAnio()});
+            }
+        }
+    }//GEN-LAST:event_JComboAlumnosActionPerformed
 
 
     public void Llenar(){
         JComboAlumnos.removeAllItems();
         AlumnoData AD = new AlumnoData();
         for(Alumno alumno:AD.listarAlumnos()){
-            JComboAlumnos.addItem(alumno.getIdAlumno()+", DNI: "+alumno.getDni()+", Nombre: "+alumno.getNombre()+", Apellido: "+alumno.getApellido());
+            JComboAlumnos.addItem(alumno);
         }
-        MateriaData MD = new MateriaData();
         DTM.setColumnIdentifiers(new Object[]{"ID","Nombre","Año","Estado"});
-        for(Materia materia:MD.listarMaterias()){
-            DTM.addRow(new Object[]{materia.getIdMateria(),materia.getNombre(),materia.getAnio(),materia.isEstado()});
-        }
         jTable1.setModel(DTM);
+        if(jRadioButton1.isSelected()){
+        InscripcionData ID = new InscripcionData();
+        for (int i = DTM.getRowCount() - 1; i >= 0; i--) {
+        DTM.removeRow(i);
+        }
+        if(jRadioButton1.isSelected()){
+            Alumno alumno = (Alumno) JComboAlumnos.getSelectedItem();
+            for(Materia materia:ID.obtenerMateriasCursadas(alumno.getIdAlumno())){
+                DTM.addRow(new Object[]{materia.getIdMateria(),materia.getNombre(),materia.getAnio()});
+            }
+            }
+    }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> JComboAlumnos;
+    private javax.swing.JComboBox<Alumno> JComboAlumnos;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
