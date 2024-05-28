@@ -30,7 +30,13 @@ public class Actualizar_notas extends javax.swing.JInternalFrame {
             JComboAlumno.addItem(alumno);
         }
         DTM.setColumnIdentifiers(new Object[]{"ID","Nombre","nota"});
-        
+        Alumno alumno = (Alumno) JComboAlumno.getSelectedItem();
+            for(int i=DTM.getRowCount()-1;i>=0;i--){
+                DTM.removeRow(i);
+                }
+            for(Inscripcion insc:ID.obtenerInscripcionesPorAlumno(alumno.getIdAlumno())){
+                DTM.addRow(new Object[]{insc.getMateria().getIdMateria(),insc.getMateria().getNombre(),insc.getNota()});
+            }
         JTable.setModel(DTM);
     }
 
