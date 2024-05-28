@@ -367,12 +367,11 @@ public class Listar_Alumnos_menu extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBuscarActionPerformed
 
     private void jNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNuevoActionPerformed
-        if(jBuscar.isEnabled()){
-                JButtonNew();
-        } else{
+        if (jBuscar.isEnabled()) {
+            JButtonNew();
+        } else {
             JButtonNew("Nectar");
-            
-          }
+        }
     }//GEN-LAST:event_jNuevoActionPerformed
 
     private void jEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEliminarActionPerformed

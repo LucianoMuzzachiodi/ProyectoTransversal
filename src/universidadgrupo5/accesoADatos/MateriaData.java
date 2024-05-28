@@ -32,11 +32,9 @@ public class MateriaData {
                 JOptionPane.showMessageDialog(null, "Materia agregada");
             }
             ps.close();
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en el acceso a la tabla materia");
         }
-
     }
 
     //BUSCAR UNA MATERIA
@@ -54,13 +52,10 @@ public class MateriaData {
             } else {
                 JOptionPane.showMessageDialog(null, "No existe la materia con ese ID");
             }
-
             ps.close();
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
         }
-
         return null;
     }
 
@@ -82,7 +77,6 @@ public class MateriaData {
                 JOptionPane.showMessageDialog(null, "La materia no existe");
 
             }
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
         }
@@ -116,9 +110,7 @@ public class MateriaData {
                 Materia materia = new Materia(rs.getInt("idMateria"), rs.getString("nombre"), rs.getInt("anio"), rs.getBoolean("estado"));
                 materiaAxu.add(materia);
             }
-
             ps.close();
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
         }

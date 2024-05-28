@@ -7,7 +7,6 @@ import universidadgrupo5.entidades.Materia;
 public class Listar_Materias_Menu extends javax.swing.JInternalFrame {
     public Listar_Materias_Menu() {
         initComponents();
-        
         jModificar.setEnabled(false);
         jEliminar.setEnabled(true);
     }

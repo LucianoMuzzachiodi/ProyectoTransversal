@@ -48,9 +48,9 @@ public class Materia {
     public String toString() {
         String estado;
         if(this.activo){estado = "Activa";}else{estado = "Inactiva";}
-        return "\nID: "+idMateria
-                + "\nMateria: "+nombre
-                + "\nAño: "+anio
+        return "\nID: " + idMateria
+                + "\nMateria: " + nombre
+                + "\nAño: " + anio
                 + "\nEstado: " + estado;
     }
 }

@@ -69,11 +69,11 @@ public class Alumno {
     public String toString() {
         String activo;
         if(estado){activo = "Activo";}else{activo = "Inactivo";}
-        return "\nID: "+idAlumno
-                + "\n, Nombre: "+nombre
-                + "\n, Apellido: "+apellido
-                + "\n, DNI: "+dni
-                + "\n, Fecha de nacimiento: "+fechaNac
+        return "\nID: " + idAlumno
+                + "\n, Nombre: " + nombre
+                + "\n, Apellido: " + apellido
+                + "\n, DNI: " + dni
+                + "\n, Fecha de nacimiento: " + fechaNac
                 + "\n, Estado: " + activo;
     }
 }

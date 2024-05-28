@@ -7,8 +7,7 @@ import universidadgrupo5.accesoADatos.*;
 public class Listar_Materias extends javax.swing.JInternalFrame {
     DefaultTableModel modelo = new DefaultTableModel();
     MateriaData materiaData = new MateriaData();
-    
-    
+        
     public Listar_Materias() {
         initComponents();
         jRadio1.setSelected(true);
@@ -23,6 +22,7 @@ public class Listar_Materias extends javax.swing.JInternalFrame {
         jTabla = new javax.swing.JTable();
         jRadio1 = new javax.swing.JRadioButton();
         jRadio2 = new javax.swing.JRadioButton();
+        jSalir = new javax.swing.JButton();
 
         jTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -51,17 +51,29 @@ public class Listar_Materias extends javax.swing.JInternalFrame {
             }
         });
 
+        jSalir.setText("Salir");
+        jSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jRadio1)
-                .addGap(27, 27, 27)
-                .addComponent(jRadio2)
-                .addGap(65, 65, 65))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jRadio1)
+                        .addGap(27, 27, 27)
+                        .addComponent(jRadio2)
+                        .addGap(65, 65, 65))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jSalir)
+                        .addGap(155, 155, 155))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -71,7 +83,10 @@ public class Listar_Materias extends javax.swing.JInternalFrame {
                     .addComponent(jRadio1)
                     .addComponent(jRadio2))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jSalir)
+                .addGap(27, 27, 27))
         );
 
         pack();
@@ -79,7 +94,7 @@ public class Listar_Materias extends javax.swing.JInternalFrame {
 
     private void jRadio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadio2ActionPerformed
         if(jRadio2.isSelected()){
-            vaciar();
+            vaciarTabla();
             jRadio2.setSelected(true);
             jRadio1.setSelected(false);
             
@@ -93,7 +108,7 @@ public class Listar_Materias extends javax.swing.JInternalFrame {
 
     private void jRadio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadio1ActionPerformed
         if(jRadio1.isSelected()){
-            vaciar();
+            vaciarTabla();
             jRadio1.setSelected(true);
             jRadio2.setSelected(false);
             
@@ -105,6 +120,10 @@ public class Listar_Materias extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jRadio1ActionPerformed
 
+    private void jSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_jSalirActionPerformed
+
     public void llenar(){
         jTabla.removeAll();
         modelo.addColumn("ID");
@@ -112,12 +131,12 @@ public class Listar_Materias extends javax.swing.JInternalFrame {
         modelo.addColumn("Año");
         for (Materia materias : materiaData.listarMaterias()) {
             if(materias.isActivo()){
-            modelo.addRow(new Object[]{materias.getIdMateria(),materias.getNombre(),materias.getAnio()});
+                modelo.addRow(new Object[]{materias.getIdMateria(),materias.getNombre(),materias.getAnio()});
             }
         }
         jTabla.setModel(modelo);
     }
-    public void vaciar(){
+    public void vaciarTabla(){
         for (int i = modelo.getRowCount() - 1; i >= 0; i--) {
             modelo.removeRow(i);
         }
@@ -125,6 +144,7 @@ public class Listar_Materias extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton jRadio1;
     private javax.swing.JRadioButton jRadio2;
+    private javax.swing.JButton jSalir;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTabla;
     // End of variables declaration//GEN-END:variables

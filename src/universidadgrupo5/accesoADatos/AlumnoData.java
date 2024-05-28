@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import universidadgrupo5.entidades.Alumno;
 
-
 public class AlumnoData {
     private Connection con;
 
@@ -19,7 +18,6 @@ public class AlumnoData {
 
     //GUARDAR ALUMNO
     public void guardar(Alumno alumno) {
-
         String sql = "INSERT INTO `alumno`(`dni`, `apellido`, `nombre`, `fechaNacimiento`, `estado`)"
                 + "VALUES (?, ?, ?, ?, ?)";
 
@@ -38,11 +36,9 @@ public class AlumnoData {
                 JOptionPane.showMessageDialog(null, "Alumno agregado");
             }
             ps.close();
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en el acceso a la tabla alumno");
         }
-
     }
 
     //BUSCAR ALUMNO POR ID
@@ -64,7 +60,6 @@ public class AlumnoData {
         } catch (SQLException ex) {
             Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         return null;
     }
 
@@ -84,13 +79,10 @@ public class AlumnoData {
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el alumno con ese DNI");
             }
-
             ps.close();
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
         }
-
         return alumnoAxu;
     }
 
@@ -106,13 +98,10 @@ public class AlumnoData {
                 Alumno alumno = new Alumno(rs.getInt("idAlumno"), rs.getInt("dni"), rs.getString("apellido"), rs.getString("nombre"), LocalDate.parse(String.valueOf(rs.getDate("fechaNacimiento"))), rs.getBoolean("estado"));
                 alumnoAxu.add(alumno);
             }
-
             ps.close();
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
         }
-
         return alumnoAxu;
     }
 
@@ -134,9 +123,7 @@ public class AlumnoData {
                 JOptionPane.showMessageDialog(null, "Alumno modificado");
             } else {
                 JOptionPane.showMessageDialog(null, "El alumno no existe");
-
             }
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
         }
