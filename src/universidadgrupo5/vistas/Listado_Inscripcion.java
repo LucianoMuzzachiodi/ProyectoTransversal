@@ -336,7 +336,7 @@ public class Listado_Inscripcion extends javax.swing.JInternalFrame {
         for(Alumno alumno:AD.listarAlumnos()){
             JComboAlumnos.addItem(alumno);
         }
-        DTM.setColumnIdentifiers(new Object[]{"ID","Nombre","Año","Estado"});
+        DTM.setColumnIdentifiers(new Object[]{"ID","Nombre","Año"});
         jTable1.setModel(DTM);
         if(jRadioButton1.isSelected()){
         InscripcionData ID = new InscripcionData();

@@ -8,6 +8,7 @@ public class Listar_Materias extends javax.swing.JInternalFrame {
     DefaultTableModel modelo = new DefaultTableModel();
     MateriaData materiaData = new MateriaData();
     
+    
     public Listar_Materias() {
         initComponents();
         jRadio1.setSelected(true);
@@ -110,7 +111,9 @@ public class Listar_Materias extends javax.swing.JInternalFrame {
         modelo.addColumn("Nombre");
         modelo.addColumn("Año");
         for (Materia materias : materiaData.listarMaterias()) {
+            if(materias.isActivo()){
             modelo.addRow(new Object[]{materias.getIdMateria(),materias.getNombre(),materias.getAnio()});
+            }
         }
         jTabla.setModel(modelo);
     }

@@ -108,7 +108,7 @@ public class MateriaData {
     public List<Materia> listarMaterias() {
         ArrayList<Materia> materiaAxu = new ArrayList<>();
 
-        String sql = "SELECT * FROM materia a WHERE estado = 1";
+        String sql = "SELECT * FROM materia a";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
