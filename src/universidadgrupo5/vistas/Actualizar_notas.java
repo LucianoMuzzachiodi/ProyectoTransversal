@@ -30,13 +30,7 @@ public class Actualizar_notas extends javax.swing.JInternalFrame {
             JComboAlumno.addItem(alumno);
         }
         DTM.setColumnIdentifiers(new Object[]{"ID","Nombre","nota"});
-        if(JComboAlumno.getSelectedIndex()!=-1){
-            for(Inscripcion materia:ID.obtenerInscripcionesPorAlumno(((Alumno)JComboAlumno.getItemAt(0)).getIdAlumno())){
-                DTM.addRow(new Object[]{materia.getMateria().getIdMateria(),materia.getMateria().getNombre(),materia.getNota()});
-            }
-        } else{
-            JOptionPane.showMessageDialog(this, "no hay alumnos.");
-        }
+        
         JTable.setModel(DTM);
     }
 
@@ -141,7 +135,13 @@ public class Actualizar_notas extends javax.swing.JInternalFrame {
 
     private void JComboAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JComboAlumnoActionPerformed
         if(JComboAlumno.getSelectedIndex()!=-1){
-            
+            Alumno alumno = (Alumno) JComboAlumno.getSelectedItem();
+            for(int i=DTM.getRowCount()-1;i>=0;i--){
+                DTM.removeRow(i);
+                }
+            for(Inscripcion insc:ID.obtenerInscripcionesPorAlumno(alumno.getIdAlumno())){
+                DTM.addRow(new Object[]{insc.getMateria().getIdMateria(),insc.getMateria().getNombre(),insc.getNota()});
+            }
         }
     }//GEN-LAST:event_JComboAlumnoActionPerformed
 
