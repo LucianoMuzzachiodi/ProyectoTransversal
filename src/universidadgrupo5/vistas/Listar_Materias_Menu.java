@@ -45,6 +45,7 @@ public class Listar_Materias_Menu extends javax.swing.JInternalFrame {
         jModificar1 = new javax.swing.JButton();
         jSalir1 = new javax.swing.JButton();
 
+        setTitle("Gestión de materias");
         setPreferredSize(new java.awt.Dimension(358, 292));
 
         jLabel1.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N

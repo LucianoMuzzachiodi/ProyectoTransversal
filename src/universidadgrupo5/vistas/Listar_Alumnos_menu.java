@@ -46,6 +46,7 @@ public class Listar_Alumnos_menu extends javax.swing.JInternalFrame {
         jSpinner = new javax.swing.JSpinner();
         jAplicar = new javax.swing.JButton();
 
+        setTitle("Gestión alumnos");
         setMaximumSize(new java.awt.Dimension(700, 500));
         setMinimumSize(new java.awt.Dimension(321, 370));
         setPreferredSize(new java.awt.Dimension(336, 470));

@@ -25,6 +25,8 @@ public class Listar_Alumnos extends javax.swing.JInternalFrame {
         jCheckBox2 = new javax.swing.JCheckBox();
         jTextField1 = new javax.swing.JTextField();
 
+        setTitle("Alumnos");
+
         JTABLE.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

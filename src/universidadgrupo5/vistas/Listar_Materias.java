@@ -24,6 +24,8 @@ public class Listar_Materias extends javax.swing.JInternalFrame {
         jRadio2 = new javax.swing.JRadioButton();
         jSalir = new javax.swing.JButton();
 
+        setTitle("Materias");
+
         jTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

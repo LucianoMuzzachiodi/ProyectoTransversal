@@ -34,6 +34,8 @@ public class Listado_Inscripcion extends javax.swing.JInternalFrame {
         jPanel5 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
 
+        setTitle("Gestión de inscripciones");
+
         jLabel1.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Selecciona un Alumno");
@@ -166,6 +168,11 @@ public class Listado_Inscripcion extends javax.swing.JInternalFrame {
 
         jButton3.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         jButton3.setText("Salir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -290,6 +297,10 @@ public class Listado_Inscripcion extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     public void Llenar() {
         JComboAlumnos.removeAllItems();
