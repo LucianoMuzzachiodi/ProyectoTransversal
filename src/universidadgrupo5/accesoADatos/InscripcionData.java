@@ -153,7 +153,11 @@ public class InscripcionData {
         String sql = "UPDATE inscripcion SET nota = ? WHERE idAlumno = ? AND idMateria = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setDouble(1, nota);
+            if(nota >= 0 && nota <= 10){
+                ps.setDouble(1, nota);
+            }else {
+                JOptionPane.showMessageDialog(null, "Recuerde que el puntaje tiene que ser desde el 0 al 10.");
+            }
             ps.setInt(2, idAlumno);
             ps.setInt(3, idMateria);
             int fila = ps.executeUpdate();

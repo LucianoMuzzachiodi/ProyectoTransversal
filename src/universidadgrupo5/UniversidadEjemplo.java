@@ -11,13 +11,13 @@ public class UniversidadEjemplo {
             Connection con = Conexion.getConexion();
             
            
-//            AlumnoData alu = new AlumnoData();
+            AlumnoData alu = new AlumnoData();
 
              
 
             //AGREGAR ALUMNO
-//            Alumno mariam = new Alumno(9, 41968360, "Mini", "Marian", LocalDate.of(2007, 7, 26), true);
-//            alu.guardar(mariam);
+            Alumno mariam = new Alumno(9, 41968360, "Mini", "Marian", LocalDate.of(2007, 7, 26), true);
+            alu.guardar(mariam);
              
 
 

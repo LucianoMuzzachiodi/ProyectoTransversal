@@ -140,7 +140,7 @@ public class Actualizar_notas extends javax.swing.JInternalFrame {
         if (JTable.getSelectedRow() != -1 && JComboAlumno.getSelectedIndex() != -1) {
             try {
                 Inscripcion inscripcion = ID.obtenerInscripcionesPorAlumno(((Alumno) JComboAlumno.getSelectedItem()).getIdAlumno()).get(JTable.getSelectedRow());
-                ID.actualizarNota(inscripcion.getAlumno().getIdAlumno(), inscripcion.getMateria().getIdMateria(), (double) DTM.getValueAt(JTable.getSelectedRow(), 2));
+                ID.actualizarNota(inscripcion.getAlumno().getIdAlumno(), inscripcion.getMateria().getIdMateria(), Double.parseDouble((String) DTM.getValueAt(JTable.getSelectedRow(), 2)));
                 vaciarTabla();
                 for (Inscripcion materia : ID.obtenerInscripcionesPorAlumno(((Alumno) JComboAlumno.getItemAt(JComboAlumno.getSelectedIndex())).getIdAlumno())) {
                     DTM.addRow(new Object[]{materia.getMateria().getIdMateria(), materia.getMateria().getNombre(), materia.getNota()});
